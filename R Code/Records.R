@@ -1,0 +1,1095 @@
+setwd("~/Documents/Statistics 4993 (Project in Statistics)/Datasets")
+library(rjson)
+library(beepr)
+
+NJ.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/1/stats?season=20072008")
+NJ.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/1/stats?season=20082009")
+NJ.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/1/stats?season=20092010")
+NJ.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/1/stats?season=20102011")
+NJ.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/1/stats?season=20112012")
+NJ.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/1/stats?season=20122013")
+NJ.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/1/stats?season=20132014")
+NJ.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/1/stats?season=20142015")
+NJ.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/1/stats?season=20152016")
+NJ.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/1/stats?season=20162017")
+NJ.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/1/stats?season=20172018")
+
+NYI.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/2/stats?season=20072008")
+NYI.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/2/stats?season=20082009")
+NYI.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/2/stats?season=20092010")
+NYI.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/2/stats?season=20102011")
+NYI.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/2/stats?season=20112012")
+NYI.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/2/stats?season=20122013")
+NYI.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/2/stats?season=20132014")
+NYI.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/2/stats?season=20142015")
+NYI.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/2/stats?season=20152016")
+NYI.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/2/stats?season=20162017")
+NYI.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/2/stats?season=20172018")
+
+NYR.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/3/stats?season=20072008")
+NYR.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/3/stats?season=20082009")
+NYR.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/3/stats?season=20092010")
+NYR.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/3/stats?season=20102011")
+NYR.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/3/stats?season=20112012")
+NYR.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/3/stats?season=20122013")
+NYR.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/3/stats?season=20132014")
+NYR.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/3/stats?season=20142015")
+NYR.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/3/stats?season=20152016")
+NYR.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/3/stats?season=20162017")
+NYR.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/3/stats?season=20172018")
+
+PHI.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/4/stats?season=20072008")
+PHI.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/4/stats?season=20082009")
+PHI.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/4/stats?season=20092010")
+PHI.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/4/stats?season=20102011")
+PHI.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/4/stats?season=20112012")
+PHI.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/4/stats?season=20122013")
+PHI.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/4/stats?season=20132014")
+PHI.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/4/stats?season=20142015")
+PHI.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/4/stats?season=20152016")
+PHI.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/4/stats?season=20162017")
+PHI.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/4/stats?season=20172018")
+
+PITTS.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/5/stats?season=20072008")
+PITTS.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/5/stats?season=20082009")
+PITTS.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/5/stats?season=20092010")
+PITTS.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/5/stats?season=20102011")
+PITTS.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/5/stats?season=20112012")
+PITTS.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/5/stats?season=20122013")
+PITTS.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/5/stats?season=20132014")
+PITTS.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/5/stats?season=20142015")
+PITTS.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/5/stats?season=20152016")
+PITTS.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/5/stats?season=20162017")
+PITTS.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/5/stats?season=20172018")
+
+BOS.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/6/stats?season=20072008")
+BOS.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/6/stats?season=20082009")
+BOS.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/6/stats?season=20092010")
+BOS.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/6/stats?season=20102011")
+BOS.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/6/stats?season=20112012")
+BOS.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/6/stats?season=20122013")
+BOS.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/6/stats?season=20132014")
+BOS.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/6/stats?season=20142015")
+BOS.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/6/stats?season=20152016")
+BOS.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/6/stats?season=20162017")
+BOS.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/6/stats?season=20172018")
+
+BUFF.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/7/stats?season=20072008")
+BUFF.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/7/stats?season=20082009")
+BUFF.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/7/stats?season=20092010")
+BUFF.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/7/stats?season=20102011")
+BUFF.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/7/stats?season=20112012")
+BUFF.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/7/stats?season=20122013")
+BUFF.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/7/stats?season=20132014")
+BUFF.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/7/stats?season=20142015")
+BUFF.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/7/stats?season=20152016")
+BUFF.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/7/stats?season=20162017")
+BUFF.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/7/stats?season=20172018")
+
+MON.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/8/stats?season=20072008")
+MON.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/8/stats?season=20082009")
+MON.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/8/stats?season=20092010")
+MON.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/8/stats?season=20102011")
+MON.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/8/stats?season=20112012")
+MON.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/8/stats?season=20122013")
+MON.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/8/stats?season=20132014")
+MON.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/8/stats?season=20142015")
+MON.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/8/stats?season=20152016")
+MON.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/8/stats?season=20162017")
+MON.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/8/stats?season=20172018")
+
+OTT.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/9/stats?season=20072008")
+OTT.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/9/stats?season=20082009")
+OTT.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/9/stats?season=20092010")
+OTT.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/9/stats?season=20102011")
+OTT.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/9/stats?season=20112012")
+OTT.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/9/stats?season=20122013")
+OTT.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/9/stats?season=20132014")
+OTT.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/9/stats?season=20142015")
+OTT.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/9/stats?season=20152016")
+OTT.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/9/stats?season=20162017")
+OTT.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/9/stats?season=20172018")
+
+TOR.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/10/stats?season=20072008")
+TOR.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/10/stats?season=20082009")
+TOR.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/10/stats?season=20092010")
+TOR.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/10/stats?season=20102011")
+TOR.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/10/stats?season=20112012")
+TOR.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/10/stats?season=20122013")
+TOR.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/10/stats?season=20132014")
+TOR.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/10/stats?season=20142015")
+TOR.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/10/stats?season=20152016")
+TOR.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/10/stats?season=20162017")
+TOR.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/10/stats?season=20172018")
+
+CAR.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/12/stats?season=20072008")
+CAR.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/12/stats?season=20082009")
+CAR.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/12/stats?season=20092010")
+CAR.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/12/stats?season=20112012")
+CAR.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/12/stats?season=20112012")
+CAR.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/12/stats?season=20122013")
+CAR.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/12/stats?season=20132014")
+CAR.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/12/stats?season=20142015")
+CAR.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/12/stats?season=20152016")
+CAR.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/12/stats?season=20162017")
+CAR.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/12/stats?season=20172018")
+
+FLO.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/13/stats?season=20072008")
+FLO.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/13/stats?season=20082009")
+FLO.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/13/stats?season=20092010")
+FLO.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/13/stats?season=20102011")
+FLO.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/13/stats?season=20112012")
+FLO.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/13/stats?season=20122013")
+FLO.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/13/stats?season=20132014")
+FLO.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/13/stats?season=20142015")
+FLO.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/13/stats?season=20152016")
+FLO.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/13/stats?season=20162017")
+FLO.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/13/stats?season=20172018")
+
+TB.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/14/stats?season=20072008")
+TB.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/14/stats?season=20082009")
+TB.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/14/stats?season=20092010")
+TB.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/14/stats?season=20102011")
+TB.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/14/stats?season=20112012")
+TB.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/14/stats?season=20122013")
+TB.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/14/stats?season=20132014")
+TB.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/14/stats?season=20142015")
+TB.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/14/stats?season=20152016")
+TB.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/14/stats?season=20162017")
+TB.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/14/stats?season=20172018")
+
+WASH.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/15/stats?season=20072008")
+WASH.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/15/stats?season=20082009")
+WASH.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/15/stats?season=20092010")
+WASH.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/15/stats?season=20102011")
+WASH.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/15/stats?season=20112012")
+WASH.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/15/stats?season=20122013")
+WASH.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/15/stats?season=20132014")
+WASH.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/15/stats?season=20142015")
+WASH.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/15/stats?season=20152016")
+WASH.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/15/stats?season=20162017")
+WASH.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/15/stats?season=20172018")
+
+CHI.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/16/stats?season=20072008")
+CHI.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/16/stats?season=20082009")
+CHI.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/16/stats?season=20092010")
+CHI.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/16/stats?season=20102011")
+CHI.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/16/stats?season=20112012")
+CHI.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/16/stats?season=20122013")
+CHI.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/16/stats?season=20132014")
+CHI.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/16/stats?season=20142015")
+CHI.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/16/stats?season=20152016")
+CHI.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/16/stats?season=20162017")
+CHI.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/16/stats?season=20172018")
+
+DET.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/17/stats?season=20072008")
+DET.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/17/stats?season=20082009")
+DET.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/17/stats?season=20092010")
+DET.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/17/stats?season=20102011")
+DET.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/17/stats?season=20112012")
+DET.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/17/stats?season=20122013")
+DET.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/17/stats?season=20132014")
+DET.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/17/stats?season=20142015")
+DET.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/17/stats?season=20152016")
+DET.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/17/stats?season=20162017")
+DET.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/17/stats?season=20172018")
+
+NASH.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/18/stats?season=20072008")
+NASH.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/18/stats?season=20082009")
+NASH.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/18/stats?season=20092010")
+NASH.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/18/stats?season=20102011")
+NASH.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/18/stats?season=20112012")
+NASH.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/18/stats?season=20122013")
+NASH.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/18/stats?season=20132014")
+NASH.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/18/stats?season=20142015")
+NASH.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/18/stats?season=20152016")
+NASH.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/18/stats?season=20162017")
+NASH.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/18/stats?season=20172018")
+
+STL.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/19/stats?season=20072008")
+STL.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/19/stats?season=20082009")
+STL.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/19/stats?season=20092010")
+STL.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/19/stats?season=20102011")
+STL.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/19/stats?season=20112012")
+STL.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/19/stats?season=20122013")
+STL.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/19/stats?season=20132014")
+STL.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/19/stats?season=20142015")
+STL.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/19/stats?season=20152016")
+STL.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/19/stats?season=20162017")
+STL.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/19/stats?season=20172018")
+
+CAL.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/20/stats?season=20072008")
+CAL.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/20/stats?season=20082009")
+CAL.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/20/stats?season=20092010")
+CAL.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/20/stats?season=20102011")
+CAL.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/20/stats?season=20112012")
+CAL.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/20/stats?season=20122013")
+CAL.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/20/stats?season=20132014")
+CAL.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/20/stats?season=20142015")
+CAL.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/20/stats?season=20152016")
+CAL.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/20/stats?season=20162017")
+CAL.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/20/stats?season=20172018")
+
+COL.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/21/stats?season=20072008")
+COL.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/21/stats?season=20082009")
+COL.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/21/stats?season=20092010")
+COL.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/21/stats?season=20102011")
+COL.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/21/stats?season=20112012")
+COL.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/21/stats?season=20122013")
+COL.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/21/stats?season=20132014")
+COL.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/21/stats?season=20142015")
+COL.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/21/stats?season=20152016")
+COL.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/21/stats?season=20162017")
+COL.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/21/stats?season=20172018")
+
+EDM.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/22/stats?season=20072008")
+EDM.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/22/stats?season=20082009")
+EDM.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/22/stats?season=20092010")
+EDM.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/22/stats?season=20102011")
+EDM.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/22/stats?season=20112012")
+EDM.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/22/stats?season=20122013")
+EDM.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/22/stats?season=20132014")
+EDM.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/22/stats?season=20142015")
+EDM.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/22/stats?season=20152016")
+EDM.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/22/stats?season=20162017")
+EDM.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/22/stats?season=20172018")
+
+VAN.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/23/stats?season=20072008")
+VAN.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/23/stats?season=20082009")
+VAN.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/23/stats?season=20092010")
+VAN.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/23/stats?season=20102011")
+VAN.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/23/stats?season=20112012")
+VAN.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/23/stats?season=20122013")
+VAN.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/23/stats?season=20132014")
+VAN.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/23/stats?season=20142015")
+VAN.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/23/stats?season=20152016")
+VAN.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/23/stats?season=20162017")
+VAN.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/23/stats?season=20172018")
+
+ANA.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/24/stats?season=20072008")
+ANA.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/24/stats?season=20082009")
+ANA.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/24/stats?season=20092010")
+ANA.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/24/stats?season=20102011")
+ANA.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/24/stats?season=20112012")
+ANA.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/24/stats?season=20122013")
+ANA.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/24/stats?season=20132014")
+ANA.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/24/stats?season=20142015")
+ANA.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/24/stats?season=20152016")
+ANA.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/24/stats?season=20162017")
+ANA.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/24/stats?season=20172018")
+
+DAL.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/25/stats?season=20072008")
+DAL.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/25/stats?season=20082009")
+DAL.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/25/stats?season=20092010")
+DAL.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/25/stats?season=20102011")
+DAL.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/25/stats?season=20112012")
+DAL.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/25/stats?season=20122013")
+DAL.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/25/stats?season=20132014")
+DAL.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/25/stats?season=20142015")
+DAL.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/25/stats?season=20152016")
+DAL.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/25/stats?season=20162017")
+DAL.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/25/stats?season=20172018")
+
+LA.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/26/stats?season=20072008")
+LA.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/26/stats?season=20082009")
+LA.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/26/stats?season=20092010")
+LA.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/26/stats?season=20102011")
+LA.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/26/stats?season=20112012")
+LA.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/26/stats?season=20122013")
+LA.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/26/stats?season=20132014")
+LA.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/26/stats?season=20142015")
+LA.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/26/stats?season=20152016")
+LA.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/26/stats?season=20162017")
+LA.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/26/stats?season=20172018")
+
+SJ.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/28/stats?season=20072008")
+SJ.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/28/stats?season=20082009")
+SJ.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/28/stats?season=20092010")
+SJ.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/28/stats?season=20102011")
+SJ.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/28/stats?season=20112012")
+SJ.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/28/stats?season=20122013")
+SJ.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/28/stats?season=20132014")
+SJ.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/28/stats?season=20142015")
+SJ.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/28/stats?season=20152016")
+SJ.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/28/stats?season=20162017")
+SJ.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/28/stats?season=20172018")
+
+CBJ.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/29/stats?season=20072008")
+CBJ.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/29/stats?season=20082009")
+CBJ.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/29/stats?season=20092010")
+CBJ.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/29/stats?season=20102011")
+CBJ.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/29/stats?season=20112012")
+CBJ.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/29/stats?season=20122013")
+CBJ.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/29/stats?season=20132014")
+CBJ.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/29/stats?season=20142015")
+CBJ.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/29/stats?season=20152016")
+CBJ.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/29/stats?season=20162017")
+CBJ.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/29/stats?season=20172018")
+
+MIN.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/30/stats?season=20072008")
+MIN.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/30/stats?season=20082009")
+MIN.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/30/stats?season=20092010")
+MIN.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/30/stats?season=20102011")
+MIN.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/30/stats?season=20112012")
+MIN.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/30/stats?season=20122013")
+MIN.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/30/stats?season=20132014")
+MIN.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/30/stats?season=20142015")
+MIN.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/30/stats?season=20152016")
+MIN.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/30/stats?season=20162017")
+MIN.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/30/stats?season=20172018")
+
+WIN.ATL.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/11/stats?season=20072008")
+WIN.ATL.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/11/stats?season=20082009")
+WIN.ATL.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/11/stats?season=20092010")
+WIN.ATL.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/11/stats?season=20102011")
+WIN.ATL.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/52/stats?season=20112012")
+WIN.ATL.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/52/stats?season=20122013")
+WIN.ATL.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/52/stats?season=20132014")
+WIN.ATL.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/52/stats?season=20142015")
+WIN.ATL.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/52/stats?season=20152016")
+WIN.ATL.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/52/stats?season=20162017")
+WIN.ATL.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/52/stats?season=20172018")
+
+ARI.2007.2008 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/27/stats?season=20072008")
+ARI.2008.2009 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/27/stats?season=20082009")
+ARI.2009.2010 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/27/stats?season=20092010")
+ARI.2010.2011 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/27/stats?season=20102011")
+ARI.2011.2012 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/27/stats?season=20112012")
+ARI.2012.2013 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/27/stats?season=20122013")
+ARI.2013.2014 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/27/stats?season=20132014")
+ARI.2014.2015 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/53/stats?season=20142015")
+ARI.2015.2016 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/53/stats?season=20152016")
+ARI.2016.2017 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/53/stats?season=20162017")
+ARI.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/53/stats?season=20172018")
+
+VGK.2017.2018 <- fromJSON(file = "https://statsapi.web.nhl.com/api/v1/teams/54/stats?season=20172018")
+
+beepr::beep(sound = 5)
+
+ANA.2007.2008 <- ANA.2007.2008$stats[[1]]$splits[[1]]$stat
+ANA.2008.2009 <- ANA.2008.2009$stats[[1]]$splits[[1]]$stat
+ANA.2009.2010 <- ANA.2009.2010$stats[[1]]$splits[[1]]$stat
+ANA.2010.2011 <- ANA.2010.2011$stats[[1]]$splits[[1]]$stat
+ANA.2011.2012 <- ANA.2011.2012$stats[[1]]$splits[[1]]$stat
+ANA.2012.2013 <- ANA.2012.2013$stats[[1]]$splits[[1]]$stat
+ANA.2013.2014 <- ANA.2013.2014$stats[[1]]$splits[[1]]$stat
+ANA.2014.2015 <- ANA.2014.2015$stats[[1]]$splits[[1]]$stat
+ANA.2015.2016 <- ANA.2015.2016$stats[[1]]$splits[[1]]$stat
+ANA.2016.2017 <- ANA.2016.2017$stats[[1]]$splits[[1]]$stat
+ANA.2017.2018 <- ANA.2017.2018$stats[[1]]$splits[[1]]$stat
+
+ARI.2007.2008 <- ARI.2007.2008$stats[[1]]$splits[[1]]$stat
+ARI.2008.2009 <- ARI.2008.2009$stats[[1]]$splits[[1]]$stat
+ARI.2009.2010 <- ARI.2009.2010$stats[[1]]$splits[[1]]$stat
+ARI.2010.2011 <- ARI.2010.2011$stats[[1]]$splits[[1]]$stat
+ARI.2011.2012 <- ARI.2011.2012$stats[[1]]$splits[[1]]$stat
+ARI.2012.2013 <- ARI.2012.2013$stats[[1]]$splits[[1]]$stat
+ARI.2013.2014 <- ARI.2013.2014$stats[[1]]$splits[[1]]$stat
+ARI.2014.2015 <- ARI.2014.2015$stats[[1]]$splits[[1]]$stat
+ARI.2015.2016 <- ARI.2015.2016$stats[[1]]$splits[[1]]$stat
+ARI.2016.2017 <- ARI.2016.2017$stats[[1]]$splits[[1]]$stat
+ARI.2017.2018 <- ARI.2017.2018$stats[[1]]$splits[[1]]$stat
+
+BOS.2007.2008 <- BOS.2007.2008$stats[[1]]$splits[[1]]$stat
+BOS.2008.2009 <- BOS.2008.2009$stats[[1]]$splits[[1]]$stat
+BOS.2009.2010 <- BOS.2009.2010$stats[[1]]$splits[[1]]$stat
+BOS.2010.2011 <- BOS.2010.2011$stats[[1]]$splits[[1]]$stat
+BOS.2011.2012 <- BOS.2011.2012$stats[[1]]$splits[[1]]$stat
+BOS.2012.2013 <- BOS.2012.2013$stats[[1]]$splits[[1]]$stat
+BOS.2013.2014 <- BOS.2013.2014$stats[[1]]$splits[[1]]$stat
+BOS.2014.2015 <- BOS.2014.2015$stats[[1]]$splits[[1]]$stat
+BOS.2015.2016 <- BOS.2015.2016$stats[[1]]$splits[[1]]$stat
+BOS.2016.2017 <- BOS.2016.2017$stats[[1]]$splits[[1]]$stat
+BOS.2017.2018 <- BOS.2017.2018$stats[[1]]$splits[[1]]$stat
+
+BUFF.2007.2008 <- BUFF.2007.2008$stats[[1]]$splits[[1]]$stat
+BUFF.2008.2009 <- BUFF.2008.2009$stats[[1]]$splits[[1]]$stat
+BUFF.2009.2010 <- BUFF.2009.2010$stats[[1]]$splits[[1]]$stat
+BUFF.2010.2011 <- BUFF.2010.2011$stats[[1]]$splits[[1]]$stat
+BUFF.2011.2012 <- BUFF.2011.2012$stats[[1]]$splits[[1]]$stat
+BUFF.2012.2013 <- BUFF.2012.2013$stats[[1]]$splits[[1]]$stat
+BUFF.2013.2014 <- BUFF.2013.2014$stats[[1]]$splits[[1]]$stat
+BUFF.2014.2015 <- BUFF.2014.2015$stats[[1]]$splits[[1]]$stat
+BUFF.2015.2016 <- BUFF.2015.2016$stats[[1]]$splits[[1]]$stat
+BUFF.2016.2017 <- BUFF.2016.2017$stats[[1]]$splits[[1]]$stat
+BUFF.2017.2018 <- BUFF.2017.2018$stats[[1]]$splits[[1]]$stat
+
+CAL.2007.2008 <- CAL.2007.2008$stats[[1]]$splits[[1]]$stat
+CAL.2008.2009 <- CAL.2008.2009$stats[[1]]$splits[[1]]$stat
+CAL.2009.2010 <- CAL.2009.2010$stats[[1]]$splits[[1]]$stat
+CAL.2010.2011 <- CAL.2010.2011$stats[[1]]$splits[[1]]$stat
+CAL.2011.2012 <- CAL.2011.2012$stats[[1]]$splits[[1]]$stat
+CAL.2012.2013 <- CAL.2012.2013$stats[[1]]$splits[[1]]$stat
+CAL.2013.2014 <- CAL.2013.2014$stats[[1]]$splits[[1]]$stat
+CAL.2014.2015 <- CAL.2014.2015$stats[[1]]$splits[[1]]$stat
+CAL.2015.2016 <- CAL.2015.2016$stats[[1]]$splits[[1]]$stat
+CAL.2016.2017 <- CAL.2016.2017$stats[[1]]$splits[[1]]$stat
+CAL.2017.2018 <- CAL.2017.2018$stats[[1]]$splits[[1]]$stat
+
+CAR.2007.2008 <- CAR.2007.2008$stats[[1]]$splits[[1]]$stat
+CAR.2008.2009 <- CAR.2008.2009$stats[[1]]$splits[[1]]$stat
+CAR.2009.2010 <- CAR.2009.2010$stats[[1]]$splits[[1]]$stat
+CAR.2010.2011 <- CAR.2010.2011$stats[[1]]$splits[[1]]$stat
+CAR.2011.2012 <- CAR.2011.2012$stats[[1]]$splits[[1]]$stat
+CAR.2012.2013 <- CAR.2012.2013$stats[[1]]$splits[[1]]$stat
+CAR.2013.2014 <- CAR.2013.2014$stats[[1]]$splits[[1]]$stat
+CAR.2014.2015 <- CAR.2014.2015$stats[[1]]$splits[[1]]$stat
+CAR.2015.2016 <- CAR.2015.2016$stats[[1]]$splits[[1]]$stat
+CAR.2016.2017 <- CAR.2016.2017$stats[[1]]$splits[[1]]$stat
+CAR.2017.2018 <- CAR.2017.2018$stats[[1]]$splits[[1]]$stat
+
+CHI.2007.2008 <- CHI.2007.2008$stats[[1]]$splits[[1]]$stat
+CHI.2008.2009 <- CHI.2008.2009$stats[[1]]$splits[[1]]$stat
+CHI.2009.2010 <- CHI.2009.2010$stats[[1]]$splits[[1]]$stat
+CHI.2010.2011 <- CHI.2010.2011$stats[[1]]$splits[[1]]$stat
+CHI.2011.2012 <- CHI.2011.2012$stats[[1]]$splits[[1]]$stat
+CHI.2012.2013 <- CHI.2012.2013$stats[[1]]$splits[[1]]$stat
+CHI.2013.2014 <- CHI.2013.2014$stats[[1]]$splits[[1]]$stat
+CHI.2014.2015 <- CHI.2014.2015$stats[[1]]$splits[[1]]$stat
+CHI.2015.2016 <- CHI.2015.2016$stats[[1]]$splits[[1]]$stat
+CHI.2016.2017 <- CHI.2016.2017$stats[[1]]$splits[[1]]$stat
+CHI.2017.2018 <- CHI.2017.2018$stats[[1]]$splits[[1]]$stat
+
+COL.2007.2008 <- COL.2007.2008$stats[[1]]$splits[[1]]$stat
+COL.2008.2009 <- COL.2008.2009$stats[[1]]$splits[[1]]$stat
+COL.2009.2010 <- COL.2009.2010$stats[[1]]$splits[[1]]$stat
+COL.2010.2011 <- COL.2010.2011$stats[[1]]$splits[[1]]$stat
+COL.2011.2012 <- COL.2011.2012$stats[[1]]$splits[[1]]$stat
+COL.2012.2013 <- COL.2012.2013$stats[[1]]$splits[[1]]$stat
+COL.2013.2014 <- COL.2013.2014$stats[[1]]$splits[[1]]$stat
+COL.2014.2015 <- COL.2014.2015$stats[[1]]$splits[[1]]$stat
+COL.2015.2016 <- COL.2015.2016$stats[[1]]$splits[[1]]$stat
+COL.2016.2017 <- COL.2016.2017$stats[[1]]$splits[[1]]$stat
+COL.2017.2018 <- COL.2017.2018$stats[[1]]$splits[[1]]$stat
+
+CBJ.2007.2008 <- CBJ.2007.2008$stats[[1]]$splits[[1]]$stat
+CBJ.2008.2009 <- CBJ.2008.2009$stats[[1]]$splits[[1]]$stat
+CBJ.2009.2010 <- CBJ.2009.2010$stats[[1]]$splits[[1]]$stat
+CBJ.2010.2011 <- CBJ.2010.2011$stats[[1]]$splits[[1]]$stat
+CBJ.2011.2012 <- CBJ.2011.2012$stats[[1]]$splits[[1]]$stat
+CBJ.2012.2013 <- CBJ.2012.2013$stats[[1]]$splits[[1]]$stat
+CBJ.2013.2014 <- CBJ.2013.2014$stats[[1]]$splits[[1]]$stat
+CBJ.2014.2015 <- CBJ.2014.2015$stats[[1]]$splits[[1]]$stat
+CBJ.2015.2016 <- CBJ.2015.2016$stats[[1]]$splits[[1]]$stat
+CBJ.2016.2017 <- CBJ.2016.2017$stats[[1]]$splits[[1]]$stat
+CBJ.2017.2018 <- CBJ.2017.2018$stats[[1]]$splits[[1]]$stat
+
+DAL.2007.2008 <- DAL.2007.2008$stats[[1]]$splits[[1]]$stat
+DAL.2008.2009 <- DAL.2008.2009$stats[[1]]$splits[[1]]$stat
+DAL.2009.2010 <- DAL.2009.2010$stats[[1]]$splits[[1]]$stat
+DAL.2010.2011 <- DAL.2010.2011$stats[[1]]$splits[[1]]$stat
+DAL.2011.2012 <- DAL.2011.2012$stats[[1]]$splits[[1]]$stat
+DAL.2012.2013 <- DAL.2012.2013$stats[[1]]$splits[[1]]$stat
+DAL.2013.2014 <- DAL.2013.2014$stats[[1]]$splits[[1]]$stat
+DAL.2014.2015 <- DAL.2014.2015$stats[[1]]$splits[[1]]$stat
+DAL.2015.2016 <- DAL.2015.2016$stats[[1]]$splits[[1]]$stat
+DAL.2016.2017 <- DAL.2016.2017$stats[[1]]$splits[[1]]$stat
+DAL.2017.2018 <- DAL.2017.2018$stats[[1]]$splits[[1]]$stat
+
+DET.2007.2008 <- DET.2007.2008$stats[[1]]$splits[[1]]$stat
+DET.2008.2009 <- DET.2008.2009$stats[[1]]$splits[[1]]$stat
+DET.2009.2010 <- DET.2009.2010$stats[[1]]$splits[[1]]$stat
+DET.2010.2011 <- DET.2010.2011$stats[[1]]$splits[[1]]$stat
+DET.2011.2012 <- DET.2011.2012$stats[[1]]$splits[[1]]$stat
+DET.2012.2013 <- DET.2012.2013$stats[[1]]$splits[[1]]$stat
+DET.2013.2014 <- DET.2013.2014$stats[[1]]$splits[[1]]$stat
+DET.2014.2015 <- DET.2014.2015$stats[[1]]$splits[[1]]$stat
+DET.2015.2016 <- DET.2015.2016$stats[[1]]$splits[[1]]$stat
+DET.2016.2017 <- DET.2016.2017$stats[[1]]$splits[[1]]$stat
+DET.2017.2018 <- DET.2017.2018$stats[[1]]$splits[[1]]$stat
+
+EDM.2007.2008 <- EDM.2007.2008$stats[[1]]$splits[[1]]$stat
+EDM.2008.2009 <- EDM.2008.2009$stats[[1]]$splits[[1]]$stat
+EDM.2009.2010 <- EDM.2009.2010$stats[[1]]$splits[[1]]$stat
+EDM.2010.2011 <- EDM.2010.2011$stats[[1]]$splits[[1]]$stat
+EDM.2011.2012 <- EDM.2011.2012$stats[[1]]$splits[[1]]$stat
+EDM.2012.2013 <- EDM.2012.2013$stats[[1]]$splits[[1]]$stat
+EDM.2013.2014 <- EDM.2013.2014$stats[[1]]$splits[[1]]$stat
+EDM.2014.2015 <- EDM.2014.2015$stats[[1]]$splits[[1]]$stat
+EDM.2015.2016 <- EDM.2015.2016$stats[[1]]$splits[[1]]$stat
+EDM.2016.2017 <- EDM.2016.2017$stats[[1]]$splits[[1]]$stat
+EDM.2017.2018 <- EDM.2017.2018$stats[[1]]$splits[[1]]$stat
+
+FLR.2007.2008 <- FLO.2007.2008$stats[[1]]$splits[[1]]$stat
+FLR.2008.2009 <- FLO.2008.2009$stats[[1]]$splits[[1]]$stat
+FLR.2009.2010 <- FLO.2009.2010$stats[[1]]$splits[[1]]$stat
+FLR.2010.2011 <- FLO.2010.2011$stats[[1]]$splits[[1]]$stat
+FLR.2011.2012 <- FLO.2011.2012$stats[[1]]$splits[[1]]$stat
+FLR.2012.2013 <- FLO.2012.2013$stats[[1]]$splits[[1]]$stat
+FLR.2013.2014 <- FLO.2013.2014$stats[[1]]$splits[[1]]$stat
+FLR.2014.2015 <- FLO.2014.2015$stats[[1]]$splits[[1]]$stat
+FLR.2015.2016 <- FLO.2015.2016$stats[[1]]$splits[[1]]$stat
+FLR.2016.2017 <- FLO.2016.2017$stats[[1]]$splits[[1]]$stat
+FLR.2017.2018 <- FLO.2017.2018$stats[[1]]$splits[[1]]$stat
+
+LA.2007.2008 <- LA.2007.2008$stats[[1]]$splits[[1]]$stat
+LA.2008.2009 <- LA.2008.2009$stats[[1]]$splits[[1]]$stat
+LA.2009.2010 <- LA.2009.2010$stats[[1]]$splits[[1]]$stat
+LA.2010.2011 <- LA.2010.2011$stats[[1]]$splits[[1]]$stat
+LA.2011.2012 <- LA.2011.2012$stats[[1]]$splits[[1]]$stat
+LA.2012.2013 <- LA.2012.2013$stats[[1]]$splits[[1]]$stat
+LA.2013.2014 <- LA.2013.2014$stats[[1]]$splits[[1]]$stat
+LA.2014.2015 <- LA.2014.2015$stats[[1]]$splits[[1]]$stat
+LA.2015.2016 <- LA.2015.2016$stats[[1]]$splits[[1]]$stat
+LA.2016.2017 <- LA.2016.2017$stats[[1]]$splits[[1]]$stat
+LA.2017.2018 <- LA.2017.2018$stats[[1]]$splits[[1]]$stat
+
+MIN.2007.2008 <- MIN.2007.2008$stats[[1]]$splits[[1]]$stat
+MIN.2008.2009 <- MIN.2008.2009$stats[[1]]$splits[[1]]$stat
+MIN.2009.2010 <- MIN.2009.2010$stats[[1]]$splits[[1]]$stat
+MIN.2010.2011 <- MIN.2010.2011$stats[[1]]$splits[[1]]$stat
+MIN.2011.2012 <- MIN.2011.2012$stats[[1]]$splits[[1]]$stat
+MIN.2012.2013 <- MIN.2012.2013$stats[[1]]$splits[[1]]$stat
+MIN.2013.2014 <- MIN.2013.2014$stats[[1]]$splits[[1]]$stat
+MIN.2014.2015 <- MIN.2014.2015$stats[[1]]$splits[[1]]$stat
+MIN.2015.2016 <- MIN.2015.2016$stats[[1]]$splits[[1]]$stat
+MIN.2016.2017 <- MIN.2016.2017$stats[[1]]$splits[[1]]$stat
+MIN.2017.2018 <- MIN.2017.2018$stats[[1]]$splits[[1]]$stat
+
+MON.2007.2008 <- MON.2007.2008$stats[[1]]$splits[[1]]$stat
+MON.2008.2009 <- MON.2008.2009$stats[[1]]$splits[[1]]$stat
+MON.2009.2010 <- MON.2009.2010$stats[[1]]$splits[[1]]$stat
+MON.2010.2011 <- MON.2010.2011$stats[[1]]$splits[[1]]$stat
+MON.2011.2012 <- MON.2011.2012$stats[[1]]$splits[[1]]$stat
+MON.2012.2013 <- MON.2012.2013$stats[[1]]$splits[[1]]$stat
+MON.2013.2014 <- MON.2013.2014$stats[[1]]$splits[[1]]$stat
+MON.2014.2015 <- MON.2014.2015$stats[[1]]$splits[[1]]$stat
+MON.2015.2016 <- MON.2015.2016$stats[[1]]$splits[[1]]$stat
+MON.2016.2017 <- MON.2016.2017$stats[[1]]$splits[[1]]$stat
+MON.2017.2018 <- MON.2017.2018$stats[[1]]$splits[[1]]$stat
+
+NASH.2007.2008 <- NASH.2007.2008$stats[[1]]$splits[[1]]$stat
+NASH.2008.2009 <- NASH.2008.2009$stats[[1]]$splits[[1]]$stat
+NASH.2009.2010 <- NASH.2009.2010$stats[[1]]$splits[[1]]$stat
+NASH.2010.2011 <- NASH.2010.2011$stats[[1]]$splits[[1]]$stat
+NASH.2011.2012 <- NASH.2011.2012$stats[[1]]$splits[[1]]$stat
+NASH.2012.2013 <- NASH.2012.2013$stats[[1]]$splits[[1]]$stat
+NASH.2013.2014 <- NASH.2013.2014$stats[[1]]$splits[[1]]$stat
+NASH.2014.2015 <- NASH.2014.2015$stats[[1]]$splits[[1]]$stat
+NASH.2015.2016 <- NASH.2015.2016$stats[[1]]$splits[[1]]$stat
+NASH.2016.2017 <- NASH.2016.2017$stats[[1]]$splits[[1]]$stat
+NASH.2017.2018 <- NASH.2017.2018$stats[[1]]$splits[[1]]$stat
+
+NJ.2007.2008 <- NJ.2007.2008$stats[[1]]$splits[[1]]$stat
+NJ.2008.2009 <- NJ.2008.2009$stats[[1]]$splits[[1]]$stat
+NJ.2009.2010 <- NJ.2009.2010$stats[[1]]$splits[[1]]$stat
+NJ.2010.2011 <- NJ.2010.2011$stats[[1]]$splits[[1]]$stat
+NJ.2011.2012 <- NJ.2011.2012$stats[[1]]$splits[[1]]$stat
+NJ.2012.2013 <- NJ.2012.2013$stats[[1]]$splits[[1]]$stat
+NJ.2013.2014 <- NJ.2013.2014$stats[[1]]$splits[[1]]$stat
+NJ.2014.2015 <- NJ.2014.2015$stats[[1]]$splits[[1]]$stat
+NJ.2015.2016 <- NJ.2015.2016$stats[[1]]$splits[[1]]$stat
+NJ.2016.2017 <- NJ.2016.2017$stats[[1]]$splits[[1]]$stat
+NJ.2017.2018 <- NJ.2017.2018$stats[[1]]$splits[[1]]$stat
+
+NYI.2007.2008 <- NYI.2007.2008$stats[[1]]$splits[[1]]$stat
+NYI.2008.2009 <- NYI.2008.2009$stats[[1]]$splits[[1]]$stat
+NYI.2009.2010 <- NYI.2009.2010$stats[[1]]$splits[[1]]$stat
+NYI.2010.2011 <- NYI.2010.2011$stats[[1]]$splits[[1]]$stat
+NYI.2011.2012 <- NYI.2011.2012$stats[[1]]$splits[[1]]$stat
+NYI.2012.2013 <- NYI.2012.2013$stats[[1]]$splits[[1]]$stat
+NYI.2013.2014 <- NYI.2013.2014$stats[[1]]$splits[[1]]$stat
+NYI.2014.2015 <- NYI.2014.2015$stats[[1]]$splits[[1]]$stat
+NYI.2015.2016 <- NYI.2015.2016$stats[[1]]$splits[[1]]$stat
+NYI.2016.2017 <- NYI.2016.2017$stats[[1]]$splits[[1]]$stat
+NYI.2017.2018 <- NYI.2017.2018$stats[[1]]$splits[[1]]$stat
+
+NYR.2007.2008 <- NYR.2007.2008$stats[[1]]$splits[[1]]$stat
+NYR.2008.2009 <- NYR.2008.2009$stats[[1]]$splits[[1]]$stat
+NYR.2009.2010 <- NYR.2009.2010$stats[[1]]$splits[[1]]$stat
+NYR.2010.2011 <- NYR.2010.2011$stats[[1]]$splits[[1]]$stat
+NYR.2011.2012 <- NYR.2011.2012$stats[[1]]$splits[[1]]$stat
+NYR.2012.2013 <- NYR.2012.2013$stats[[1]]$splits[[1]]$stat
+NYR.2013.2014 <- NYR.2013.2014$stats[[1]]$splits[[1]]$stat
+NYR.2014.2015 <- NYR.2014.2015$stats[[1]]$splits[[1]]$stat
+NYR.2015.2016 <- NYR.2015.2016$stats[[1]]$splits[[1]]$stat
+NYR.2016.2017 <- NYR.2016.2017$stats[[1]]$splits[[1]]$stat
+NYR.2017.2018 <- NYR.2017.2018$stats[[1]]$splits[[1]]$stat
+
+OTT.2007.2008 <- OTT.2007.2008$stats[[1]]$splits[[1]]$stat
+OTT.2008.2009 <- OTT.2008.2009$stats[[1]]$splits[[1]]$stat
+OTT.2009.2010 <- OTT.2009.2010$stats[[1]]$splits[[1]]$stat
+OTT.2010.2011 <- OTT.2010.2011$stats[[1]]$splits[[1]]$stat
+OTT.2011.2012 <- OTT.2011.2012$stats[[1]]$splits[[1]]$stat
+OTT.2012.2013 <- OTT.2012.2013$stats[[1]]$splits[[1]]$stat
+OTT.2013.2014 <- OTT.2013.2014$stats[[1]]$splits[[1]]$stat
+OTT.2014.2015 <- OTT.2014.2015$stats[[1]]$splits[[1]]$stat
+OTT.2015.2016 <- OTT.2015.2016$stats[[1]]$splits[[1]]$stat
+OTT.2016.2017 <- OTT.2016.2017$stats[[1]]$splits[[1]]$stat
+OTT.2017.2018 <- OTT.2017.2018$stats[[1]]$splits[[1]]$stat
+
+PHI.2007.2008 <- PHI.2007.2008$stats[[1]]$splits[[1]]$stat
+PHI.2008.2009 <- PHI.2008.2009$stats[[1]]$splits[[1]]$stat
+PHI.2009.2010 <- PHI.2009.2010$stats[[1]]$splits[[1]]$stat
+PHI.2010.2011 <- PHI.2010.2011$stats[[1]]$splits[[1]]$stat
+PHI.2011.2012 <- PHI.2011.2012$stats[[1]]$splits[[1]]$stat
+PHI.2012.2013 <- PHI.2012.2013$stats[[1]]$splits[[1]]$stat
+PHI.2013.2014 <- PHI.2013.2014$stats[[1]]$splits[[1]]$stat
+PHI.2014.2015 <- PHI.2014.2015$stats[[1]]$splits[[1]]$stat
+PHI.2015.2016 <- PHI.2015.2016$stats[[1]]$splits[[1]]$stat
+PHI.2016.2017 <- PHI.2016.2017$stats[[1]]$splits[[1]]$stat
+PHI.2017.2018 <- PHI.2017.2018$stats[[1]]$splits[[1]]$stat
+
+PITTS.2007.2008 <- PITTS.2007.2008$stats[[1]]$splits[[1]]$stat
+PITTS.2008.2009 <- PITTS.2008.2009$stats[[1]]$splits[[1]]$stat
+PITTS.2009.2010 <- PITTS.2009.2010$stats[[1]]$splits[[1]]$stat
+PITTS.2010.2011 <- PITTS.2010.2011$stats[[1]]$splits[[1]]$stat
+PITTS.2011.2012 <- PITTS.2011.2012$stats[[1]]$splits[[1]]$stat
+PITTS.2012.2013 <- PITTS.2012.2013$stats[[1]]$splits[[1]]$stat
+PITTS.2013.2014 <- PITTS.2013.2014$stats[[1]]$splits[[1]]$stat
+PITTS.2014.2015 <- PITTS.2014.2015$stats[[1]]$splits[[1]]$stat
+PITTS.2015.2016 <- PITTS.2015.2016$stats[[1]]$splits[[1]]$stat
+PITTS.2016.2017 <- PITTS.2016.2017$stats[[1]]$splits[[1]]$stat
+PITTS.2017.2018 <- PITTS.2017.2018$stats[[1]]$splits[[1]]$stat
+
+STL.2007.2008 <- STL.2007.2008$stats[[1]]$splits[[1]]$stat
+STL.2008.2009 <- STL.2008.2009$stats[[1]]$splits[[1]]$stat
+STL.2009.2010 <- STL.2009.2010$stats[[1]]$splits[[1]]$stat
+STL.2010.2011 <- STL.2010.2011$stats[[1]]$splits[[1]]$stat
+STL.2011.2012 <- STL.2011.2012$stats[[1]]$splits[[1]]$stat
+STL.2012.2013 <- STL.2012.2013$stats[[1]]$splits[[1]]$stat
+STL.2013.2014 <- STL.2013.2014$stats[[1]]$splits[[1]]$stat
+STL.2014.2015 <- STL.2014.2015$stats[[1]]$splits[[1]]$stat
+STL.2015.2016 <- STL.2015.2016$stats[[1]]$splits[[1]]$stat
+STL.2016.2017 <- STL.2016.2017$stats[[1]]$splits[[1]]$stat
+STL.2017.2018 <- STL.2017.2018$stats[[1]]$splits[[1]]$stat
+
+SJ.2007.2008 <- SJ.2007.2008$stats[[1]]$splits[[1]]$stat
+SJ.2008.2009 <- SJ.2008.2009$stats[[1]]$splits[[1]]$stat
+SJ.2009.2010 <- SJ.2009.2010$stats[[1]]$splits[[1]]$stat
+SJ.2010.2011 <- SJ.2010.2011$stats[[1]]$splits[[1]]$stat
+SJ.2011.2012 <- SJ.2011.2012$stats[[1]]$splits[[1]]$stat
+SJ.2012.2013 <- SJ.2012.2013$stats[[1]]$splits[[1]]$stat
+SJ.2013.2014 <- SJ.2013.2014$stats[[1]]$splits[[1]]$stat
+SJ.2014.2015 <- SJ.2014.2015$stats[[1]]$splits[[1]]$stat
+SJ.2015.2016 <- SJ.2015.2016$stats[[1]]$splits[[1]]$stat
+SJ.2016.2017 <- SJ.2016.2017$stats[[1]]$splits[[1]]$stat
+SJ.2017.2018 <- SJ.2017.2018$stats[[1]]$splits[[1]]$stat
+
+TB.2007.2008 <- TB.2007.2008$stats[[1]]$splits[[1]]$stat
+TB.2008.2009 <- TB.2008.2009$stats[[1]]$splits[[1]]$stat
+TB.2009.2010 <- TB.2009.2010$stats[[1]]$splits[[1]]$stat
+TB.2010.2011 <- TB.2010.2011$stats[[1]]$splits[[1]]$stat
+TB.2011.2012 <- TB.2011.2012$stats[[1]]$splits[[1]]$stat
+TB.2012.2013 <- TB.2012.2013$stats[[1]]$splits[[1]]$stat
+TB.2013.2014 <- TB.2013.2014$stats[[1]]$splits[[1]]$stat
+TB.2014.2015 <- TB.2014.2015$stats[[1]]$splits[[1]]$stat
+TB.2015.2016 <- TB.2015.2016$stats[[1]]$splits[[1]]$stat
+TB.2016.2017 <- TB.2016.2017$stats[[1]]$splits[[1]]$stat
+TB.2017.2018 <- TB.2017.2018$stats[[1]]$splits[[1]]$stat
+
+TOR.2007.2008 <- TOR.2007.2008$stats[[1]]$splits[[1]]$stat
+TOR.2008.2009 <- TOR.2008.2009$stats[[1]]$splits[[1]]$stat
+TOR.2009.2010 <- TOR.2009.2010$stats[[1]]$splits[[1]]$stat
+TOR.2010.2011 <- TOR.2010.2011$stats[[1]]$splits[[1]]$stat
+TOR.2011.2012 <- TOR.2011.2012$stats[[1]]$splits[[1]]$stat
+TOR.2012.2013 <- TOR.2012.2013$stats[[1]]$splits[[1]]$stat
+TOR.2013.2014 <- TOR.2013.2014$stats[[1]]$splits[[1]]$stat
+TOR.2014.2015 <- TOR.2014.2015$stats[[1]]$splits[[1]]$stat
+TOR.2015.2016 <- TOR.2015.2016$stats[[1]]$splits[[1]]$stat
+TOR.2016.2017 <- TOR.2016.2017$stats[[1]]$splits[[1]]$stat
+TOR.2017.2018 <- TOR.2017.2018$stats[[1]]$splits[[1]]$stat
+
+VAN.2007.2008 <- VAN.2007.2008$stats[[1]]$splits[[1]]$stat
+VAN.2008.2009 <- VAN.2008.2009$stats[[1]]$splits[[1]]$stat
+VAN.2009.2010 <- VAN.2009.2010$stats[[1]]$splits[[1]]$stat
+VAN.2010.2011 <- VAN.2010.2011$stats[[1]]$splits[[1]]$stat
+VAN.2011.2012 <- VAN.2011.2012$stats[[1]]$splits[[1]]$stat
+VAN.2012.2013 <- VAN.2012.2013$stats[[1]]$splits[[1]]$stat
+VAN.2013.2014 <- VAN.2013.2014$stats[[1]]$splits[[1]]$stat
+VAN.2014.2015 <- VAN.2014.2015$stats[[1]]$splits[[1]]$stat
+VAN.2015.2016 <- VAN.2015.2016$stats[[1]]$splits[[1]]$stat
+VAN.2016.2017 <- VAN.2016.2017$stats[[1]]$splits[[1]]$stat
+VAN.2017.2018 <- VAN.2017.2018$stats[[1]]$splits[[1]]$stat
+
+VGK.2017.2018 <- VGK.2017.2018$stats[[1]]$splits[[1]]$stat
+
+WASH.2007.2008 <- WASH.2007.2008$stats[[1]]$splits[[1]]$stat
+WASH.2008.2009 <- WASH.2008.2009$stats[[1]]$splits[[1]]$stat
+WASH.2009.2010 <- WASH.2009.2010$stats[[1]]$splits[[1]]$stat
+WASH.2010.2011 <- WASH.2010.2011$stats[[1]]$splits[[1]]$stat
+WASH.2011.2012 <- WASH.2011.2012$stats[[1]]$splits[[1]]$stat
+WASH.2012.2013 <- WASH.2012.2013$stats[[1]]$splits[[1]]$stat
+WASH.2013.2014 <- WASH.2013.2014$stats[[1]]$splits[[1]]$stat
+WASH.2014.2015 <- WASH.2014.2015$stats[[1]]$splits[[1]]$stat
+WASH.2015.2016 <- WASH.2015.2016$stats[[1]]$splits[[1]]$stat
+WASH.2016.2017 <- WASH.2016.2017$stats[[1]]$splits[[1]]$stat
+WASH.2017.2018 <- WASH.2017.2018$stats[[1]]$splits[[1]]$stat
+
+WIN.ATL.2007.2008 <- WIN.ATL.2007.2008$stats[[1]]$splits[[1]]$stat
+WIN.ATL.2008.2009 <- WIN.ATL.2008.2009$stats[[1]]$splits[[1]]$stat
+WIN.ATL.2009.2010 <- WIN.ATL.2009.2010$stats[[1]]$splits[[1]]$stat
+WIN.ATL.2010.2011 <- WIN.ATL.2010.2011$stats[[1]]$splits[[1]]$stat
+WIN.ATL.2011.2012 <- WIN.ATL.2011.2012$stats[[1]]$splits[[1]]$stat
+WIN.ATL.2012.2013 <- WIN.ATL.2012.2013$stats[[1]]$splits[[1]]$stat
+WIN.ATL.2013.2014 <- WIN.ATL.2013.2014$stats[[1]]$splits[[1]]$stat
+WIN.ATL.2014.2015 <- WIN.ATL.2014.2015$stats[[1]]$splits[[1]]$stat
+WIN.ATL.2015.2016 <- WIN.ATL.2015.2016$stats[[1]]$splits[[1]]$stat
+WIN.ATL.2016.2017 <- WIN.ATL.2016.2017$stats[[1]]$splits[[1]]$stat
+WIN.ATL.2017.2018 <- WIN.ATL.2017.2018$stats[[1]]$splits[[1]]$stat
+
+beepr::beep(sound = 8)
+
+write.csv(ANA.2007.2008, file = "ANAHIEM20072008")
+write.csv(ANA.2008.2009, file = "ANAHIEM20082009")
+write.csv(ANA.2009.2010, file = "ANAHIEM20092010")
+write.csv(ANA.2010.2011, file = "ANAHIEM20102011")
+write.csv(ANA.2011.2012, file = "ANAHIEM20112012")
+write.csv(ANA.2012.2013, file = "ANAHIEM20122013")
+write.csv(ANA.2013.2014, file = "ANAHIEM20132014")
+write.csv(ANA.2014.2015, file = "ANAHIEM20142015")
+write.csv(ANA.2015.2016, file = "ANAHIEM20152016")
+write.csv(ANA.2016.2017, file = "ANAHIEM20162017")
+write.csv(ANA.2017.2018, file = "ANAHIEM20172018")
+
+write.csv(ARI.2007.2008, file = "ARIZONA20072008")
+write.csv(ARI.2008.2009, file = "ARIZONA20082009")
+write.csv(ARI.2009.2010, file = "ARIZONA20092010")
+write.csv(ARI.2010.2011, file = "ARIZONA20102011")
+write.csv(ARI.2011.2012, file = "ARIZONA20112012")
+write.csv(ARI.2012.2013, file = "ARIZONA20122013")
+write.csv(ARI.2013.2014, file = "ARIZONA20132014")
+write.csv(ARI.2014.2015, file = "ARIZONA20142015")
+write.csv(ARI.2015.2016, file = "ARIZONA20152016")
+write.csv(ARI.2016.2017, file = "ARIZONA20162017")
+write.csv(ARI.2017.2018, file = "ARIZONA20172018")
+
+write.csv(BOS.2007.2008, file = "BOSTON20072008")
+write.csv(BOS.2008.2009, file = "BOSTON20082009")
+write.csv(BOS.2009.2010, file = "BOSTON20092010")
+write.csv(BOS.2010.2011, file = "BOSTON20102011")
+write.csv(BOS.2011.2012, file = "BOSTON20112012")
+write.csv(BOS.2012.2013, file = "BOSTON20122013")
+write.csv(BOS.2013.2014, file = "BOSTON20132014")
+write.csv(BOS.2014.2015, file = "BOSTON20142015")
+write.csv(BOS.2015.2016, file = "BOSTON20152016")
+write.csv(BOS.2016.2017, file = "BOSTON20162017")
+write.csv(BOS.2017.2018, file = "BOSTON20172018")
+
+write.csv(BUFF.2007.2008, file = "BUFFALO20072008")
+write.csv(BUFF.2008.2009, file = "BUFFALO20082009")
+write.csv(BUFF.2009.2010, file = "BUFFALO20092010")
+write.csv(BUFF.2010.2011, file = "BUFFALO20102011")
+write.csv(BUFF.2011.2012, file = "BUFFALO20112012")
+write.csv(BUFF.2012.2013, file = "BUFFALO20122013")
+write.csv(BUFF.2013.2014, file = "BUFFALO20132014")
+write.csv(BUFF.2014.2015, file = "BUFFALO20142015")
+write.csv(BUFF.2015.2016, file = "BUFFALO20152016")
+write.csv(BUFF.2016.2017, file = "BUFFALO20162017")
+write.csv(BUFF.2017.2018, file = "BUFFALO20172018")
+
+write.csv(CAR.2007.2008, file = "CAROLINA20072008")
+write.csv(CAR.2008.2009, file = "CAROLINA20082009")
+write.csv(CAR.2009.2010, file = "CAROLINA20092010")
+write.csv(CAR.2010.2011, file = "CAROLINA20102011")
+write.csv(CAR.2011.2012, file = "CAROLINA20112012")
+write.csv(CAR.2012.2013, file = "CAROLINA20122013")
+write.csv(CAR.2013.2014, file = "CAROLINA20132014")
+write.csv(CAR.2014.2015, file = "CAROLINA20142015")
+write.csv(CAR.2015.2016, file = "CAROLINA20152016")
+write.csv(CAR.2016.2017, file = "CAROLINA20162017")
+write.csv(CAR.2017.2018, file = "CAROLINA20172018")
+
+write.csv(CAL.2007.2008, file = "CALGARY20072008")
+write.csv(CAL.2008.2009, file = "CALGARY20082009")
+write.csv(CAL.2009.2010, file = "CALGARY20092010")
+write.csv(CAL.2010.2011, file = "CALGARY20102011")
+write.csv(CAL.2011.2012, file = "CALGARY20112012")
+write.csv(CAL.2012.2013, file = "CALGARY20122013")
+write.csv(CAL.2013.2014, file = "CALGARY20132014")
+write.csv(CAL.2014.2015, file = "CALGARY20142015")
+write.csv(CAL.2015.2016, file = "CALGARY20152016")
+write.csv(CAL.2016.2017, file = "CALGARY20162017")
+write.csv(CAL.2017.2018, file = "CALGARY20172018")
+
+write.csv(CHI.2007.2008, file = "CHICAGO20072008")
+write.csv(CHI.2008.2009, file = "CHICAGO20082009")
+write.csv(CHI.2009.2010, file = "CHICAGO20092010")
+write.csv(CHI.2010.2011, file = "CHICAGO20102011")
+write.csv(CHI.2011.2012, file = "CHICAGO20112012")
+write.csv(CHI.2012.2013, file = "CHICAGO20122013")
+write.csv(CHI.2013.2014, file = "CHICAGO20132014")
+write.csv(CHI.2014.2015, file = "CHICAGO20142015")
+write.csv(CHI.2015.2016, file = "CHICAGO20152016")
+write.csv(CHI.2016.2017, file = "CHICAGO20162017")
+write.csv(CHI.2017.2018, file = "CHICAGO20172018")
+
+write.csv(COL.2007.2008, file = "COLORADO20072008")
+write.csv(COL.2008.2009, file = "COLORADO20082009")
+write.csv(COL.2009.2010, file = "COLORADO20092010")
+write.csv(COL.2010.2011, file = "COLORADO20102011")
+write.csv(COL.2011.2012, file = "COLORADO20112012")
+write.csv(COL.2012.2013, file = "COLORADO20122013")
+write.csv(COL.2013.2014, file = "COLORADO20132014")
+write.csv(COL.2014.2015, file = "COLORADO20142015")
+write.csv(COL.2015.2016, file = "COLORADO20152016")
+write.csv(COL.2016.2017, file = "COLORADO20162017")
+write.csv(COL.2017.2018, file = "COLORADO20172018")
+
+write.csv(CBJ.2007.2008, file = "COLUMBUS20072008")
+write.csv(CBJ.2008.2009, file = "COLUMBUS20082009")
+write.csv(CBJ.2009.2010, file = "COLUMBUS20092010")
+write.csv(CBJ.2010.2011, file = "COLUMBUS20102011")
+write.csv(CBJ.2011.2012, file = "COLUMBUS20112012")
+write.csv(CBJ.2012.2013, file = "COLUMBUS20122013")
+write.csv(CBJ.2013.2014, file = "COLUMBUS20132014")
+write.csv(CBJ.2014.2015, file = "COLUMBUS20142015")
+write.csv(CBJ.2015.2016, file = "COLUMBUS20152016")
+write.csv(CBJ.2016.2017, file = "COLUMBUS20162017")
+write.csv(CBJ.2017.2018, file = "COLUMBUS20172018")
+
+write.csv(DAL.2007.2008, file = "DALLAS20072008")
+write.csv(DAL.2008.2009, file = "DALLAS20082009")
+write.csv(DAL.2009.2010, file = "DALLAS20092010")
+write.csv(DAL.2010.2011, file = "DALLAS20102011")
+write.csv(DAL.2011.2012, file = "DALLAS20112012")
+write.csv(DAL.2012.2013, file = "DALLAS20122013")
+write.csv(DAL.2013.2014, file = "DALLAS20132014")
+write.csv(DAL.2014.2015, file = "DALLAS20142015")
+write.csv(DAL.2015.2016, file = "DALLAS20152016")
+write.csv(DAL.2016.2017, file = "DALLAS20162017")
+write.csv(DAL.2017.2018, file = "DALLAS20172018")
+
+write.csv(DET.2007.2008, file = "DETROIT20072008")
+write.csv(DET.2008.2009, file = "DETROIT20082009")
+write.csv(DET.2009.2010, file = "DETROIT20092010")
+write.csv(DET.2010.2011, file = "DETROIT20102011")
+write.csv(DET.2011.2012, file = "DETROIT20112012")
+write.csv(DET.2012.2013, file = "DETROIT20122013")
+write.csv(DET.2013.2014, file = "DETROIT20132014")
+write.csv(DET.2014.2015, file = "DETROIT20142015")
+write.csv(DET.2015.2016, file = "DETROIT20152016")
+write.csv(DET.2016.2017, file = "DETROIT20162017")
+write.csv(DET.2017.2018, file = "DETROIT20172018")
+
+write.csv(EDM.2007.2008, file = "EDMONTON20072008")
+write.csv(EDM.2008.2009, file = "EDMONTON20082009")
+write.csv(EDM.2009.2010, file = "EDMONTON20092010")
+write.csv(EDM.2010.2011, file = "EDMONTON20102011")
+write.csv(EDM.2011.2012, file = "EDMONTON20112012")
+write.csv(EDM.2012.2013, file = "EDMONTON20122013")
+write.csv(EDM.2013.2014, file = "EDMONTON20132014")
+write.csv(EDM.2014.2015, file = "EDMONTON20142015")
+write.csv(EDM.2015.2016, file = "EDMONTON20152016")
+write.csv(EDM.2016.2017, file = "EDMONTON20162017")
+write.csv(EDM.2017.2018, file = "EDMONTON20172018")
+
+write.csv(FLR.2007.2008, file = "FLORIDA20072008")
+write.csv(FLR.2008.2009, file = "FLORIDA20082009")
+write.csv(FLR.2009.2010, file = "FLORIDA20092010")
+write.csv(FLR.2010.2011, file = "FLORIDA20102011")
+write.csv(FLR.2011.2012, file = "FLORIDA20112012")
+write.csv(FLR.2012.2013, file = "FLORIDA20122013")
+write.csv(FLR.2013.2014, file = "FLORIDA20132014")
+write.csv(FLR.2014.2015, file = "FLORIDA20142015")
+write.csv(FLR.2015.2016, file = "FLORIDA20152016")
+write.csv(FLR.2016.2017, file = "FLORIDA20162017")
+write.csv(FLR.2017.2018, file = "FLORIDA20172018")
+
+write.csv(LA.2007.2008, file = "LOS_ANGLAS20072008")
+write.csv(LA.2008.2009, file = "LOS_ANGLAS20082009")
+write.csv(LA.2009.2010, file = "LOS_ANGLAS20092010")
+write.csv(LA.2010.2011, file = "LOS_ANGLAS20102011")
+write.csv(LA.2011.2012, file = "LOS_ANGLAS20112012")
+write.csv(LA.2012.2013, file = "LOS_ANGLAS20122013")
+write.csv(LA.2013.2014, file = "LOS_ANGLAS20132014")
+write.csv(LA.2014.2015, file = "LOS_ANGLAS20142015")
+write.csv(LA.2015.2016, file = "LOS_ANGLAS20152016")
+write.csv(LA.2016.2017, file = "LOS_ANGLAS20162017")
+write.csv(LA.2017.2018, file = "LOS_ANGLAS20172018")
+
+write.csv(MIN.2007.2008, file = "MINNESODA20072008")
+write.csv(MIN.2008.2009, file = "MINNESODA20082009")
+write.csv(MIN.2009.2010, file = "MINNESODA20092010")
+write.csv(MIN.2010.2011, file = "MINNESODA20102011")
+write.csv(MIN.2011.2012, file = "MINNESODA20112012")
+write.csv(MIN.2012.2013, file = "MINNESODA20122013")
+write.csv(MIN.2013.2014, file = "MINNESODA20132014")
+write.csv(MIN.2014.2015, file = "MINNESODA20142015")
+write.csv(MIN.2015.2016, file = "MINNESODA20152016")
+write.csv(MIN.2016.2017, file = "MINNESODA20162017")
+write.csv(MIN.2017.2018, file = "MINNESODA20172018")
+
+write.csv(MON.2007.2008, file = "MONTREAL20072008")
+write.csv(MON.2008.2009, file = "MONTREAL20082009")
+write.csv(MON.2009.2010, file = "MONTREAL20092010")
+write.csv(MON.2010.2011, file = "MONTREAL20102011")
+write.csv(MON.2011.2012, file = "MONTREAL20112012")
+write.csv(MON.2012.2013, file = "MONTREAL20122013")
+write.csv(MON.2013.2014, file = "MONTREAL20132014")
+write.csv(MON.2014.2015, file = "MONTREAL20142015")
+write.csv(MON.2015.2016, file = "MONTREAL20152016")
+write.csv(MON.2016.2017, file = "MONTREAL20162017")
+write.csv(MON.2017.2018, file = "MONTREAL20172018")
+
+write.csv(NASH.2007.2008, file = "NASHVILLE20072008")
+write.csv(NASH.2008.2009, file = "NASHVILLE20082009")
+write.csv(NASH.2009.2010, file = "NASHVILLE20092010")
+write.csv(NASH.2010.2011, file = "NASHVILLE20102011")
+write.csv(NASH.2011.2012, file = "NASHVILLE20112012")
+write.csv(NASH.2012.2013, file = "NASHVILLE20122013")
+write.csv(NASH.2013.2014, file = "NASHVILLE20132014")
+write.csv(NASH.2014.2015, file = "NASHVILLE20142015")
+write.csv(NASH.2015.2016, file = "NASHVILLE20152016")
+write.csv(NASH.2016.2017, file = "NASHVILLE20162017")
+write.csv(NASH.2017.2018, file = "NASHVILLE20172018")
+
+write.csv(NJ.2007.2008, file = "NEW_JERESY20072008")
+write.csv(NJ.2008.2009, file = "NEW_JERESY20082009")
+write.csv(NJ.2009.2010, file = "NEW_JERESY20092010")
+write.csv(NJ.2010.2011, file = "NEW_JERESY20102011")
+write.csv(NJ.2011.2012, file = "NEW_JERESY20112012")
+write.csv(NJ.2012.2013, file = "NEW_JERESY20122013")
+write.csv(NJ.2013.2014, file = "NEW_JERESY20132014")
+write.csv(NJ.2014.2015, file = "NEW_JERESY20142015")
+write.csv(NJ.2015.2016, file = "NEW_JERESY20152016")
+write.csv(NJ.2016.2017, file = "NEW_JERESY20162017")
+write.csv(NJ.2017.2018, file = "NEW_JERESY20172018")
+
+write.csv(NYR.2007.2008, file = "NEW_YORK_RANGERS20072008")
+write.csv(NYR.2008.2009, file = "NEW_YORK_RANGERS20082009")
+write.csv(NYR.2009.2010, file = "NEW_YORK_RANGERS20092010")
+write.csv(NYR.2010.2011, file = "NEW_YORK_RANGERS20102011")
+write.csv(NYR.2011.2012, file = "NEW_YORK_RANGERS20112012")
+write.csv(NYR.2012.2013, file = "NEW_YORK_RANGERS20122013")
+write.csv(NYR.2013.2014, file = "NEW_YORK_RANGERS20132014")
+write.csv(NYR.2014.2015, file = "NEW_YORK_RANGERS20142015")
+write.csv(NYR.2015.2016, file = "NEW_YORK_RANGERS20152016")
+write.csv(NYR.2016.2017, file = "NEW_YORK_RANGERS20162017")
+write.csv(NYR.2017.2018, file = "NEW_YORK_RANGERS20172018")
+
+write.csv(NYI.2007.2008, file = "NEW_YORK_ISLANDERS20072008")
+write.csv(NYI.2008.2009, file = "NEW_YORK_ISLANDERS20082009")
+write.csv(NYI.2009.2010, file = "NEW_YORK_ISLANDERS20092010")
+write.csv(NYI.2010.2011, file = "NEW_YORK_ISLANDERS20102011")
+write.csv(NYI.2011.2012, file = "NEW_YORK_ISLANDERS20112012")
+write.csv(NYI.2012.2013, file = "NEW_YORK_ISLANDERS20122013")
+write.csv(NYI.2013.2014, file = "NEW_YORK_ISLANDERS20132014")
+write.csv(NYI.2014.2015, file = "NEW_YORK_ISLANDERS20142015")
+write.csv(NYI.2015.2016, file = "NEW_YORK_ISLANDERS20152016")
+write.csv(NYI.2016.2017, file = "NEW_YORK_ISLANDERS20162017")
+write.csv(NYI.2017.2018, file = "NEW_YORK_ISLANDERS20172018")
+
+write.csv(OTT.2007.2008, file = "OTTAWA20072008")
+write.csv(OTT.2008.2009, file = "OTTAWA20082009")
+write.csv(OTT.2009.2010, file = "OTTAWA20092010")
+write.csv(OTT.2010.2011, file = "OTTAWA20102011")
+write.csv(OTT.2011.2012, file = "OTTAWA20112012")
+write.csv(OTT.2012.2013, file = "OTTAWA20122013")
+write.csv(OTT.2013.2014, file = "OTTAWA20132014")
+write.csv(OTT.2014.2015, file = "OTTAWA20142015")
+write.csv(OTT.2015.2016, file = "OTTAWA20152016")
+write.csv(OTT.2016.2017, file = "OTTAWA20162017")
+write.csv(OTT.2017.2018, file = "OTTAWA20172018")
+
+write.csv(PHI.2007.2008, file = "PHILIDELPHIA20072008")
+write.csv(PHI.2008.2009, file = "PHILIDELPHIA20082009")
+write.csv(PHI.2009.2010, file = "PHILIDELPHIA20092010")
+write.csv(PHI.2010.2011, file = "PHILIDELPHIA20102011")
+write.csv(PHI.2011.2012, file = "PHILIDELPHIA20112012")
+write.csv(PHI.2012.2013, file = "PHILIDELPHIA20122013")
+write.csv(PHI.2013.2014, file = "PHILIDELPHIA20132014")
+write.csv(PHI.2014.2015, file = "PHILIDELPHIA20142015")
+write.csv(PHI.2015.2016, file = "PHILIDELPHIA20152016")
+write.csv(PHI.2016.2017, file = "PHILIDELPHIA20162017")
+write.csv(PHI.2017.2018, file = "PHILIDELPHIA20172018")
+
+write.csv(PITTS.2007.2008, file = "PITTSBURG20072008")
+write.csv(PITTS.2008.2009, file = "PITTSBURG20082009")
+write.csv(PITTS.2009.2010, file = "PITTSBURG20092010")
+write.csv(PITTS.2010.2011, file = "PITTSBURG20102011")
+write.csv(PITTS.2011.2012, file = "PITTSBURG20112012")
+write.csv(PITTS.2012.2013, file = "PITTSBURG20122013")
+write.csv(PITTS.2013.2014, file = "PITTSBURG20132014")
+write.csv(PITTS.2014.2015, file = "PITTSBURG20142015")
+write.csv(PITTS.2015.2016, file = "PITTSBURG20152016")
+write.csv(PITTS.2016.2017, file = "PITTSBURG20162017")
+write.csv(PITTS.2017.2018, file = "PITTSBURG20172018")
+
+write.csv(STL.2007.2008, file = "ST_LOUIS20072008")
+write.csv(STL.2008.2009, file = "ST_LOUIS20082009")
+write.csv(STL.2009.2010, file = "ST_LOUIS20092010")
+write.csv(STL.2010.2011, file = "ST_LOUIS20102011")
+write.csv(STL.2011.2012, file = "ST_LOUIS20112012")
+write.csv(STL.2012.2013, file = "ST_LOUIS20122013")
+write.csv(STL.2013.2014, file = "ST_LOUIS20132014")
+write.csv(STL.2014.2015, file = "ST_LOUIS20142015")
+write.csv(STL.2015.2016, file = "ST_LOUIS20152016")
+write.csv(STL.2016.2017, file = "ST_LOUIS20162017")
+write.csv(STL.2017.2018, file = "ST_LOUIS20172018")
+
+write.csv(SJ.2007.2008, file = "SAN_JOSE20072008")
+write.csv(SJ.2008.2009, file = "SAN_JOSE20082009")
+write.csv(SJ.2009.2010, file = "SAN_JOSE20092010")
+write.csv(SJ.2010.2011, file = "SAN_JOSE20102011")
+write.csv(SJ.2011.2012, file = "SAN_JOSE20112012")
+write.csv(SJ.2012.2013, file = "SAN_JOSE20122013")
+write.csv(SJ.2013.2014, file = "SAN_JOSE20132014")
+write.csv(SJ.2014.2015, file = "SAN_JOSE20142015")
+write.csv(SJ.2015.2016, file = "SAN_JOSE20152016")
+write.csv(SJ.2016.2017, file = "SAN_JOSE20162017")
+write.csv(SJ.2017.2018, file = "SAN_JOSE20172018")
+
+write.csv(TB.2007.2008, file = "TAMPA_BAY20072008")
+write.csv(TB.2008.2009, file = "TAMPA_BAY20082009")
+write.csv(TB.2009.2010, file = "TAMPA_BAY20092010")
+write.csv(TB.2010.2011, file = "TAMPA_BAY20102011")
+write.csv(TB.2011.2012, file = "TAMPA_BAY20112012")
+write.csv(TB.2012.2013, file = "TAMPA_BAY20122013")
+write.csv(TB.2013.2014, file = "TAMPA_BAY20132014")
+write.csv(TB.2014.2015, file = "TAMPA_BAY20142015")
+write.csv(TB.2015.2016, file = "TAMPA_BAY20152016")
+write.csv(TB.2016.2017, file = "TAMPA_BAY20162017")
+write.csv(TB.2017.2018, file = "TAMPA_BAY20172018")
+
+write.csv(TOR.2007.2008, file = "TORONTO20072008")
+write.csv(TOR.2008.2009, file = "TORONTO20082009")
+write.csv(TOR.2009.2010, file = "TORONTO20092010")
+write.csv(TOR.2010.2011, file = "TORONTO20102011")
+write.csv(TOR.2011.2012, file = "TORONTO20112012")
+write.csv(TOR.2012.2013, file = "TORONTO20122013")
+write.csv(TOR.2013.2014, file = "TORONTO20132014")
+write.csv(TOR.2014.2015, file = "TORONTO20142015")
+write.csv(TOR.2015.2016, file = "TORONTO20152016")
+write.csv(TOR.2016.2017, file = "TORONTO20162017")
+write.csv(TOR.2017.2018, file = "TORONTO20172018")
+
+write.csv(VAN.2007.2008, file = "VANCOUVER20072008")
+write.csv(VAN.2008.2009, file = "VANCOUVER20082009")
+write.csv(VAN.2009.2010, file = "VANCOUVER20092010")
+write.csv(VAN.2010.2011, file = "VANCOUVER20102011")
+write.csv(VAN.2011.2012, file = "VANCOUVER20112012")
+write.csv(VAN.2012.2013, file = "VANCOUVER20122013")
+write.csv(VAN.2013.2014, file = "VANCOUVER20132014")
+write.csv(VAN.2014.2015, file = "VANCOUVER20142015")
+write.csv(VAN.2015.2016, file = "VANCOUVER20152016")
+write.csv(VAN.2016.2017, file = "VANCOUVER20162017")
+write.csv(VAN.2017.2018, file = "VANCOUVER20172018")
+
+write.csv(VGK.2017.2018, file = "VEGAS20172018")
+
+write.csv(WASH.2007.2008, file = "WASHINGTON20072008")
+write.csv(WASH.2008.2009, file = "WASHINGTON20082009")
+write.csv(WASH.2009.2010, file = "WASHINGTON20092010")
+write.csv(WASH.2010.2011, file = "WASHINGTON20102011")
+write.csv(WASH.2011.2012, file = "WASHINGTON20112012")
+write.csv(WASH.2012.2013, file = "WASHINGTON20122013")
+write.csv(WASH.2013.2014, file = "WASHINGTON20132014")
+write.csv(WASH.2014.2015, file = "WASHINGTON20142015")
+write.csv(WASH.2015.2016, file = "WASHINGTON20152016")
+write.csv(WASH.2016.2017, file = "WASHINGTON20162017")
+write.csv(WASH.2017.2018, file = "WASHINGTON20172018")
+
+write.csv(WIN.ATL.2007.2008, file = "WINNIPEG.ATLANTA20072008")
+write.csv(WIN.ATL.2008.2009, file = "WINNIPEG.ATLANTA20082009")
+write.csv(WIN.ATL.2009.2010, file = "WINNIPEG.ATLANTA20092010")
+write.csv(WIN.ATL.2010.2011, file = "WINNIPEG.ATLANTA20102011")
+write.csv(WIN.ATL.2011.2012, file = "WINNIPEG.ATLANTA20112012")
+write.csv(WIN.ATL.2012.2013, file = "WINNIPEG.ATLANTA20122013")
+write.csv(WIN.ATL.2013.2014, file = "WINNIPEG.ATLANTA20132014")
+write.csv(WIN.ATL.2014.2015, file = "WINNIPEG.ATLANTA20142015")
+write.csv(WIN.ATL.2015.2016, file = "WINNIPEG.ATLANTA20152016")
+write.csv(WIN.ATL.2016.2017, file = "WINNIPEG.ATLANTA20162017")
+write.csv(WIN.ATL.2017.2018, file = "WINNIPEG.ATLANTA20172018")
+
+beepr::beep(sound = 4)

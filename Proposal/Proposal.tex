@@ -1,0 +1,47 @@
+\documentclass{article}
+\begin{document}
+	\title{Points Prediction Models for NHL teams}
+	\author{Writer: Eric Foote}
+	\maketitle
+	\author{Supervisor: Dr. Stewart}
+	\newpage
+	\section{Motivation}
+	"Hockey statistics is in its infancy"\cite{Weissbock} from what started out in the earliest day as a Yahoo group\cite{Vollman} has grown to a few teams having an analytics department that infulences everything from personnal choices to player scouting. (e.g. Toronto) People want to forecast various aspects of the game for a varying number of reasons from who will score the most goals, which teams will have the most wins in the 82 game regular season to even who will win in the playoffs. The work that I am proposing is using various regression models to determine the points of all 30 NHL teams. For reference the points that I am refering to are in the case of a win a team is given 2 points and a single point for an overtime or shootout loss. The data is going to consist of 9 years from 2008-2009 to 2016-2017 for the usable data and the previous season 2017-2018 for testing. The different techniques that I want to apply to this data set are sum of squares, logistic regression, gradient boosted decision trees and if time permits a look at some different regression trees.
+	\section{Work done}
+	Currently a majority of time has been dedicated to the data collection process this is due to unfamiliarity with the JSON (Javascript object notation) data format, its structure when imported into R Studio and the lack of documentation on the NHL's part. However, the 10 years of player data and team records has been sucessfully collected as of right now. Also, research has been done into the various techniques that people are using to create current models using this data.  
+	\section{Work to be done}
+	I am going to be starting out doing a sum of squares regression model on the dataset and determining how successful that particular model, then move on to do the logistic regression model and then finally move on to the gradient boosted decision tree. A rough time line is stated below to give a look in to roughly how long work is going to be spent on each individual topic, overall analysis and report writing. 
+			\begin{center}
+			\begin{tabular}{|c |c|}
+				\hline
+				Item & Rough Week Length \\ 
+				\hline
+				Sum of Squares & 1 \\
+				\hline
+				Logistic Regression & 2-3 \\
+				\hline
+				Gradient Boosted Tree & 2-3 \\
+				\hline
+				Other Regression Trees & 1-2? \\
+				\hline
+				Analysis & 1.5 \\
+				\hline
+				Report Writing & 1.5 \\
+				\hline
+			\end{tabular}
+		\end{center}
+   
+	
+\newpage
+\begin{thebibliography}{9}
+	\bibitem{Weissbock}
+	Joshua Weissbock Forecasting Success in the
+	National Hockey League using
+	In-Game Statistics and Textual Data School of Electrical Engineering and Computer Science
+	Faculty of Engineering
+	University of Ottawa,  Ottawa, Canada, 2014
+	\bibitem{Vollman}
+	Robert Vollman Aug 24, 2016 \newline http://www.hockeyabstract.com/thoughts/abriefhistoryofhockeyanalyticsconferences
+\end{thebibliography}
+\end{document}
+

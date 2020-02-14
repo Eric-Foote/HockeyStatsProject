@@ -1,0 +1,48 @@
+\documentclass[12pt]{unbthesis}
+%\usepackage[left=4cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage[subfigure]{tocloft} % no number for Vita in ToC
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{footmisc}
+\usepackage{algorithmic}
+\usepackage{listings}
+\usepackage{fancyvrb}
+\usepackage{longtable}
+\title{Models for NHL Team Statistics}
+\author{Eric Foote}
+\degree{Bachelor of Science Mathematics and Statistics}
+\supervisor{Connie Stewart,Department of Mathematics and Statistics\\ & Tim Alderson,Department of Mathematics and Statistics \\ & Orla Murphy,Department of Mathematics and Statistics}
+\date{November, 2018}
+\copyrightyear{2019}
+\setlength\parindent{0pt}
+\begin{document}
+	\unbtitlepage
+\begin{titlepage}
+\end{titlepage}
+\setcounter{secnumdepth}{3} \setcounter{tocdepth}{3}
+\pagenumbering{roman} \setcounter{page}{1}
+\include{abstract}
+%%-----------Table of Contents------------------
+\renewcommand{\contentsname}{Table of Contents}
+\tableofcontents{}
+\addcontentsline{toc}{chapter}{Table of Contents}
+%%------------List of Tables----------------------
+\listoftables{}
+\addcontentsline{toc}{chapter}{List of Tables}
+%%------------List of Figures----------------------
+\listoffigures{}
+\addcontentsline{toc}{chapter}{List of Figures}
+
+%%-------------change single space to double space--------
+\doublespacing \pagenumbering{arabic} \setcounter{page}{1}
+\include{chapter1}
+\include{chapter2}
+\include{chapter3}
+\include{chapter4}
+\include{chapter5}
+\bibliographystyle{plain}
+\bibliography{mybibliography}
+\include{appendices2}
+\end{document}

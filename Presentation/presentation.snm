@@ -1,0 +1,26 @@
+\beamer@slide {fig:correlation-matrix-1}{7}
+\beamer@slide {fig:correlation-matrix-2}{8}
+\beamer@slide {fig:correlation-matrix-3}{9}
+\beamer@slide {fig:correlation-matrix-4}{10}
+\beamer@slide {fig:correlation-matrix-5}{11}
+\beamer@slide {fig:correlation-matrix-6}{12}
+\beamer@slide {fig:Residuals vs Fitted Values for AIC}{34}
+\beamer@slide {fig:QQ Plot for AIC}{35}
+\beamer@slide {fig:Scale-Location for AIC}{36}
+\beamer@slide {fig:Residuals vs Leverage for AIC}{37}
+\beamer@slide {fig:AIC Prediction}{38}
+\beamer@slide {fig:Residuals vs Fitted Values for R Squared}{40}
+\beamer@slide {fig:QQ Plot for R Squared}{41}
+\beamer@slide {fig:Scale-Location for R Squared}{42}
+\beamer@slide {fig:Residuals vs Leverage for R Squared}{43}
+\beamer@slide {fig:R Prediction}{44}
+\beamer@slide {fig:aicpredictionerror}{46}
+\beamer@slide {fig:rsquarederror}{47}
+\beamer@slide {fig:ridgetrace}{52}
+\beamer@slide {fig:Ridge Prediction}{53}
+\beamer@slide {fig:ridgepredictionerror}{54}
+\beamer@slide {fig:Residuals vs Fitted Values for Logistic Regression}{57}
+\beamer@slide {fig:QQ Plot for R Squared}{58}
+\beamer@slide {fig:Scale-Location for Logistic Regression}{59}
+\beamer@slide {fig:Residuals vs Leverage for Logistic Regression}{60}
+\beamer@slide {fig:Logistic Prediction}{61}

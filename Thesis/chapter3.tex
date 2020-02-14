@@ -1,0 +1,69 @@
+%%--------------------Chapter 3------------------------
+\chapter{Methods}
+This section provides the theoretical basis for the models we built. We begin with multiple linear regression, discuss the method used for variable selection for one of the models, ridge regression and logistic regression.
+\section*{Multiple Linear Regression}
+The multiple linear regression model expresses the mean of response variable Y as a function of one or more distinct predictor variables $x_1,...,x_k$. It takes the form: 
+\begin{center}
+	$\mu_{Y|_{x_1...x_k}} = \beta_0 + \beta_1x_1 + ...+ \beta_kx_k$,
+\end{center}
+which can be rewritten as: 
+\begin{center}
+	$Y|_{x_1...x_k} = \beta_0 + \beta_1x_1 + \beta_2x_2 + ... + \beta_kx_i + \epsilon_i$ where $i = 1,2,3,...,n$.
+\end{center}
+Here, the $\beta_k$'s are our model parameters, and $\epsilon_i$ is the \textit{residual}, the difference between the predicted value and the mean value. \\
+It is common to express the second equation in vector form; which allows us to use matrix algebra to estimate the $\beta_k$ values.
+\begin{center}$
+	Y = \begin{bmatrix}
+		Y_1 \\
+		Y_2 \\
+		... \\
+		Y_n
+	\end{bmatrix} \beta = \begin{bmatrix}
+	\beta_0 \\
+	\beta_1 \\
+	... \\
+	\beta_k
+	\end{bmatrix} \epsilon = \begin{bmatrix}
+	\epsilon_1 \\
+	\epsilon_2 \\
+	... \\
+	\epsilon_k
+	\end{bmatrix} 
+$\end{center}
+We define an additional matrix, $x$, which is an $n \times (k+1)$ matrix with the first column containing all 1's and the other $k$ columns consisting of the values of the predictor variables.
+\begin{center}$
+x = \begin{bmatrix}
+	1 & x_{11} & x_{21} & x_{31} & ... x_{k1} \\
+	1 & x_{12} & x_{22} & x_{32} & ... x_{k2} \\
+	... & ... & ... & ... & ... \\
+	1 & x_{1n} & x_{2n} & x_{3n} & ... x_{kn} \\
+\end{bmatrix}
+$\end{center}
+Now we consider the assumptions for multiple linear regression, which are:
+1. E($\epsilon$) = $\hat{0}$ and $var(\epsilon)$ = $E(\epsilon * \epsilon^T) = \sigma^2 I$. \\
+2. The $\epsilon_i$ are independent $\forall i$. \\
+3. Multicollinearity, which means that the predictor variables are not highly correlated with each other. \\
+4. All of the variables are normally distributed.
+\subsection*{AIC Variable Selection}
+The method selected to determine which of the 24 variables are included in the model was ``The Akaike Information Criterion (AIC)"\cite{Samprit}. This method attempts to select a model that has a small number of variables, but fits the dataset. The equation to determine this is: \begin{center}$
+AIC_p = nln(\frac{SSE_p}{n}) + 2p	
+$\end{center} We desire to minimize $AIC_p$. An advantage of AIC is that it allows us to compare models that do not contain the same variables. To use AIC we cannot have any missing values; we are fortunate in this regard because our data set has no missing values. Our next step is to discuss ridge regression techniques.  
+\section*{Ridge Regression}
+Ridge regression is another technique for predicting values; it is most effective when the predictor variables are highly collinear. We first need to define the ridge estimators, $\hat{\theta}(k)$, (Hoerl and Kennard\cite{Samprit}) $k \geq 0$:\begin{center}$
+\hat{\theta}(k) = (Z^TZ + kI)^{-1}Z^TY 
+$\end{center} These estimators are biased, and usually have a small mean-squared error. If we have the standard form of a regression equation.
+\begin{center}$
+\hat{Y}	= \theta_1\hat{X}_1 + \theta_2\hat{X}_2 + ... + \theta_p\hat{X}_p
+$,\end{center}
+then the system of equations used for estimating ridge regression coefficients is
+\begin{center}
+	$(1+k)\theta_1 + r_{12}\theta_2 + ... + r_{1p}\theta_p = r_{1y}$ \\
+	$r_{21}\theta_1 + (1+k)\theta_2 + ... + r_{2p}\theta_p = r_{2y}$ \\
+	$r_{p1}\theta_1 + r_{p2}\theta_2 + ... + (1+k) = r_{py}$.
+\end{center}
+Here, $r_{ij}$ is the correlation between predictors $i$ and $j$ and $r_{iy}$ is the correlation between predictor $i$ and response variable $\hat{Y}$. As $k$ increases, the bias increases. If $k$ increases dramatically, then the regression estimates tend to zero. We want to pick a value of $k$ for which the variance is greater than the bias. Usually $k$ is chosen by computing $\hat{\theta}_1,...,\hat{\theta}_p$ for $k$ between 0 and 1. We then take these values for $\hat{\theta}_1,...,\hat{\theta}_p$ and plot them against $k$. This graph is known as the ridge trace, and is used to select $k$. Now that we have our basis for ridge regression; our next step is to discuss logistic regression.
+\section*{Logistic Regression}
+Logistic regression is used when the response variable is qualitative. The logistic model can be expressed in the general form as: \begin{center}$
+P(Y=1|X_1 = x_1, ..., X_p = x_p) = \frac{e^{(\beta_0 + \beta_1x_1 + \beta_2x_2 + ... + \beta_kx_k)}}{1 + e^{(\beta_0 + \beta_1x_1 + \beta_2x_2 + ... + \beta_kx_k)}}
+$\end{center}
+This equation is \textit{the logistic regression equation}, estimating $P(Y=1)$. For our investigation we are going to be predicting the probability that a team makes the playoffs. The assumptions for logistic regression are: a qualitative predictor; a large sample size; very little multicollinearity; independent observations, and a linear relationship between the predictors and the natural log of the probability. Now that we have the theory behind our models, we can discuss the results of our implementation.

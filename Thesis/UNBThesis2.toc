@@ -1,0 +1,10 @@
+\babel@toc {english}{}
+\contentsline {chapter}{Abstract}{i}
+\contentsline {chapter}{Table of Contents}{ii}
+\contentsline {chapter}{List of Tables}{iii}
+\contentsline {chapter}{List of Figures}{1}
+\contentsline {chapter}{\numberline {1}Introduction}{2}
+\contentsline {chapter}{\numberline {2}Data}{4}
+\contentsline {chapter}{\numberline {3}Methods}{8}
+\contentsline {chapter}{\numberline {4}Results}{13}
+\contentsline {chapter}{\numberline {5}Conclusion}{28}

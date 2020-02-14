@@ -1,0 +1,388 @@
+library(glmnet)
+
+setwd("~/Documents/Statistics 4993 (Project in Statistics)/R Code")
+
+ANAHIEM20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/ANAHIEM20072008")
+ANAHIEM20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/ANAHIEM20082009")
+ANAHIEM20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/ANAHIEM20092010")
+ANAHIEM20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/ANAHIEM20102011")
+ANAHIEM20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/ANAHIEM20112012")
+ANAHIEM20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/ANAHIEM20132014")
+ANAHIEM20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/ANAHIEM20142015")
+ANAHIEM20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/ANAHIEM20152016")
+ANAHIEM20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/ANAHIEM20162017")
+
+ARIZONA20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/ARIZONA20072008")
+ARIZONA20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/ARIZONA20082009")
+ARIZONA20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/ARIZONA20092010")
+ARIZONA20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/ARIZONA20102011")
+ARIZONA20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/ARIZONA20112012")
+ARIZONA20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/ARIZONA20132014")
+ARIZONA20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/ARIZONA20142015")
+ARIZONA20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/ARIZONA20152016")
+ARIZONA20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/ARIZONA20162017")
+
+BOSTON20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/BOSTON20072008")
+BOSTON20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/BOSTON20082009")
+BOSTON20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/BOSTON20092010")
+BOSTON20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/BOSTON20102011")
+BOSTON20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/BOSTON20112012")
+BOSTON20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/BOSTON20132014")
+BOSTON20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/BOSTON20142015")
+BOSTON20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/BOSTON20152016")
+BOSTON20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/BOSTON20162017")
+
+BUFFALO20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/BUFFALO20072008")
+BUFFALO20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/BUFFALO20082009")
+BUFFALO20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/BUFFALO20092010")
+BUFFALO20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/BUFFALO20102011")
+BUFFALO20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/BUFFALO20112012")
+BUFFALO20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/BUFFALO20132014")
+BUFFALO20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/BUFFALO20142015")
+BUFFALO20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/BUFFALO20152016")
+BUFFALO20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/BUFFALO20162017")
+
+CALGARY20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/CALGARY20072008")
+CALGARY20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/CALGARY20082009")
+CALGARY20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/CALGARY20092010")
+CALGARY20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/CALGARY20102011")
+CALGARY20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/CALGARY20112012")
+CALGARY20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/CALGARY20132014")
+CALGARY20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/CALGARY20142015")
+CALGARY20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/CALGARY20152016")
+CALGARY20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/CALGARY20162017")
+
+CAROLINA20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/CAROLINA20072008")
+CAROLINA20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/CAROLINA20082009")
+CAROLINA20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/CAROLINA20092010")
+CAROLINA20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/CAROLINA20102011")
+CAROLINA20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/CAROLINA20112012")
+CAROLINA20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/CAROLINA20132014")
+CAROLINA20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/CAROLINA20142015")
+CAROLINA20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/CAROLINA20152016")
+CAROLINA20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/CAROLINA20162017")
+
+CHICAGO20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/CHICAGO20072008")
+CHICAGO20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/CHICAGO20082009")
+CHICAGO20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/CHICAGO20092010")
+CHICAGO20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/CHICAGO20102011")
+CHICAGO20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/CHICAGO20112012")
+CHICAGO20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/CHICAGO20132014")
+CHICAGO20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/CHICAGO20142015")
+CHICAGO20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/CHICAGO20152016")
+CHICAGO20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/CHICAGO20162017")
+
+COLORADO20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/COLORADO20072008")
+COLORADO20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/COLORADO20082009")
+COLORADO20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/COLORADO20092010")
+COLORADO20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/COLORADO20102011")
+COLORADO20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/COLORADO20112012")
+COLORADO20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/COLORADO20132014")
+COLORADO20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/COLORADO20142015")
+COLORADO20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/COLORADO20152016")
+COLORADO20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/COLORADO20162017")
+
+COLUMBUS20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/COLUMBUS20072008")
+COLUMBUS20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/COLUMBUS20082009")
+COLUMBUS20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/COLUMBUS20092010")
+COLUMBUS20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/COLUMBUS20102011")
+COLUMBUS20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/COLUMBUS20112012")
+COLUMBUS20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/COLUMBUS20132014")
+COLUMBUS20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/COLUMBUS20142015")
+COLUMBUS20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/COLUMBUS20152016")
+COLUMBUS20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/COLUMBUS20162017")
+
+DALLAS20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/DALLAS20072008")
+DALLAS20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/DALLAS20082009")
+DALLAS20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/DALLAS20092010")
+DALLAS20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/DALLAS20102011")
+DALLAS20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/DALLAS20112012")
+DALLAS20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/DALLAS20132014")
+DALLAS20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/DALLAS20142015")
+DALLAS20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/DALLAS20152016")
+DALLAS20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/DALLAS20162017")
+
+DETROIT20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/DETROIT20072008")
+DETROIT20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/DETROIT20082009")
+DETROIT20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/DETROIT20092010")
+DETROIT20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/DETROIT20102011")
+DETROIT20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/DETROIT20112012")
+DETROIT20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/DETROIT20132014")
+DETROIT20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/DETROIT20142015")
+DETROIT20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/DETROIT20152016")
+DETROIT20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/DETROIT20162017")
+
+EDMONTON20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/EDMONTON20072008")
+EDMONTON20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/EDMONTON20082009")
+EDMONTON20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/EDMONTON20092010")
+EDMONTON20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/EDMONTON20102011")
+EDMONTON20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/EDMONTON20112012")
+EDMONTON20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/EDMONTON20132014")
+EDMONTON20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/EDMONTON20142015")
+EDMONTON20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/EDMONTON20152016")
+EDMONTON20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/EDMONTON20162017")
+
+FLORIDA20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/FLORIDA20072008")
+FLORIDA20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/FLORIDA20082009")
+FLORIDA20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/FLORIDA20092010")
+FLORIDA20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/FLORIDA20102011")
+FLORIDA20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/FLORIDA20112012")
+FLORIDA20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/FLORIDA20132014")
+FLORIDA20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/FLORIDA20142015")
+FLORIDA20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/FLORIDA20152016")
+FLORIDA20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/FLORIDA20162017")
+
+LOS_ANGLAS20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/LOS_ANGLAS20072008")
+LOS_ANGLAS20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/LOS_ANGLAS20082009")
+LOS_ANGLAS20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/LOS_ANGLAS20092010")
+LOS_ANGLAS20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/LOS_ANGLAS20102011")
+LOS_ANGLAS20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/LOS_ANGLAS20112012")
+LOS_ANGLAS20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/LOS_ANGLAS20132014")
+LOS_ANGLAS20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/LOS_ANGLAS20142015")
+LOS_ANGLAS20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/LOS_ANGLAS20152016")
+LOS_ANGLAS20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/LOS_ANGLAS20162017")
+
+MINNESODA20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/MINNESODA20072008")
+MINNESODA20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/MINNESODA20082009")
+MINNESODA20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/MINNESODA20092010")
+MINNESODA20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/MINNESODA20102011")
+MINNESODA20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/MINNESODA20112012")
+MINNESODA20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/MINNESODA20132014")
+MINNESODA20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/MINNESODA20142015")
+MINNESODA20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/MINNESODA20152016")
+MINNESODA20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/MINNESODA20162017")
+
+MONTREAL20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/MONTREAL20072008")
+MONTREAL20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/MONTREAL20082009")
+MONTREAL20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/MONTREAL20092010")
+MONTREAL20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/MONTREAL20102011")
+MONTREAL20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/MONTREAL20112012")
+MONTREAL20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/MONTREAL20132014")
+MONTREAL20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/MONTREAL20142015")
+MONTREAL20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/MONTREAL20152016")
+MONTREAL20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/MONTREAL20162017")
+
+NASHVILLE20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NASHVILLE20072008")
+NASHVILLE20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NASHVILLE20082009")
+NASHVILLE20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NASHVILLE20092010")
+NASHVILLE20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NASHVILLE20102011")
+NASHVILLE20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NASHVILLE20112012")
+NASHVILLE20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NASHVILLE20132014")
+NASHVILLE20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NASHVILLE20142015")
+NASHVILLE20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NASHVILLE20152016")
+NASHVILLE20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NASHVILLE20162017")
+
+NEW_JERESY20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NEW_JERESY20072008")
+NEW_JERESY20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NEW_JERESY20082009")
+NEW_JERESY20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NEW_JERESY20092010")
+NEW_JERESY20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NEW_JERESY20102011")
+NEW_JERESY20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NEW_JERESY20112012")
+NEW_JERESY20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NEW_JERESY20132014")
+NEW_JERESY20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NEW_JERESY20142015")
+NEW_JERESY20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NEW_JERESY20152016")
+NEW_JERESY20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NEW_JERESY20162017")
+
+NEW_YORK_ISLANDERS20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NEW_YORK_ISLANDERS20072008")
+NEW_YORK_ISLANDERS20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NEW_YORK_ISLANDERS20082009")
+NEW_YORK_ISLANDERS20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NEW_YORK_ISLANDERS20092010")
+NEW_YORK_ISLANDERS20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NEW_YORK_ISLANDERS20102011")
+NEW_YORK_ISLANDERS20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NEW_YORK_ISLANDERS20112012")
+NEW_YORK_ISLANDERS20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NEW_YORK_ISLANDERS20132014")
+NEW_YORK_ISLANDERS20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NEW_YORK_ISLANDERS20142015")
+NEW_YORK_ISLANDERS20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NEW_YORK_ISLANDERS20152016")
+NEW_YORK_ISLANDERS20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NEW_YORK_ISLANDERS20162017")
+
+NEW_YORK_RANGERS20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NEW_YORK_RANGERS20072008")
+NEW_YORK_RANGERS20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NEW_YORK_RANGERS20082009")
+NEW_YORK_RANGERS20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NEW_YORK_RANGERS20092010")
+NEW_YORK_RANGERS20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NEW_YORK_RANGERS20102011")
+NEW_YORK_RANGERS20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NEW_YORK_RANGERS20112012")
+NEW_YORK_RANGERS20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NEW_YORK_RANGERS20132014")
+NEW_YORK_RANGERS20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NEW_YORK_RANGERS20142015")
+NEW_YORK_RANGERS20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NEW_YORK_RANGERS20152016")
+NEW_YORK_RANGERS20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/NEW_YORK_RANGERS20162017")
+
+OTTAWA20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/OTTAWA20072008")
+OTTAWA20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/OTTAWA20082009")
+OTTAWA20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/OTTAWA20092010")
+OTTAWA20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/OTTAWA20102011")
+OTTAWA20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/OTTAWA20112012")
+OTTAWA20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/OTTAWA20132014")
+OTTAWA20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/OTTAWA20142015")
+OTTAWA20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/OTTAWA20152016")
+OTTAWA20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/OTTAWA20162017")
+
+PHILIDELPHIA20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/PHILIDELPHIA20072008")
+PHILIDELPHIA20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/PHILIDELPHIA20082009")
+PHILIDELPHIA20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/PHILIDELPHIA20092010")
+PHILIDELPHIA20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/PHILIDELPHIA20102011")
+PHILIDELPHIA20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/PHILIDELPHIA20112012")
+PHILIDELPHIA20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/PHILIDELPHIA20132014")
+PHILIDELPHIA20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/PHILIDELPHIA20142015")
+PHILIDELPHIA20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/PHILIDELPHIA20152016")
+PHILIDELPHIA20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/PHILIDELPHIA20162017")
+
+PITTSBURG20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/PITTSBURG20072008")
+PITTSBURG20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/PITTSBURG20082009")
+PITTSBURG20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/PITTSBURG20092010")
+PITTSBURG20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/PITTSBURG20102011")
+PITTSBURG20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/PITTSBURG20112012")
+PITTSBURG20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/PITTSBURG20132014")
+PITTSBURG20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/PITTSBURG20142015")
+PITTSBURG20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/PITTSBURG20152016")
+PITTSBURG20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/PITTSBURG20162017")
+
+SAN_JOSE20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/SAN_JOSE20072008")
+SAN_JOSE20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/SAN_JOSE20082009")
+SAN_JOSE20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/SAN_JOSE20092010")
+SAN_JOSE20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/SAN_JOSE20102011")
+SAN_JOSE20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/SAN_JOSE20112012")
+SAN_JOSE20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/SAN_JOSE20132014")
+SAN_JOSE20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/SAN_JOSE20142015")
+SAN_JOSE20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/SAN_JOSE20152016")
+SAN_JOSE20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/SAN_JOSE20162017")
+
+ST_LOUIS20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/ST_LOUIS20072008")
+ST_LOUIS20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/ST_LOUIS20082009")
+ST_LOUIS20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/ST_LOUIS20092010")
+ST_LOUIS20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/ST_LOUIS20102011")
+ST_LOUIS20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/ST_LOUIS20112012")
+ST_LOUIS20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/ST_LOUIS20132014")
+ST_LOUIS20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/ST_LOUIS20142015")
+ST_LOUIS20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/ST_LOUIS20152016")
+ST_LOUIS20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/ST_LOUIS20162017")
+
+TAMPA_BAY20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/TAMPA_BAY20072008")
+TAMPA_BAY20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/TAMPA_BAY20082009")
+TAMPA_BAY20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/TAMPA_BAY20092010")
+TAMPA_BAY20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/TAMPA_BAY20102011")
+TAMPA_BAY20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/TAMPA_BAY20112012")
+TAMPA_BAY20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/TAMPA_BAY20132014")
+TAMPA_BAY20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/TAMPA_BAY20142015")
+TAMPA_BAY20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/TAMPA_BAY20152016")
+TAMPA_BAY20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/TAMPA_BAY20162017")
+
+TORONTO20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/TORONTO20072008")
+TORONTO20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/TORONTO20082009")
+TORONTO20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/TORONTO20092010")
+TORONTO20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/TORONTO20102011")
+TORONTO20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/TORONTO20112012")
+TORONTO20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/TORONTO20132014")
+TORONTO20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/TORONTO20142015")
+TORONTO20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/TORONTO20152016")
+TORONTO20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/TORONTO20162017")
+
+VANCOUVER20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/VANCOUVER20072008")
+VANCOUVER20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/VANCOUVER20082009")
+VANCOUVER20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/VANCOUVER20092010")
+VANCOUVER20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/VANCOUVER20102011")
+VANCOUVER20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/VANCOUVER20112012")
+VANCOUVER20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/VANCOUVER20132014")
+VANCOUVER20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/VANCOUVER20142015")
+VANCOUVER20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/VANCOUVER20152016")
+VANCOUVER20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/VANCOUVER20162017")
+
+WASHINGTON20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/WASHINGTON20072008")
+WASHINGTON20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/WASHINGTON20082009")
+WASHINGTON20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/WASHINGTON20092010")
+WASHINGTON20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/WASHINGTON20102011")
+WASHINGTON20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/WASHINGTON20112012")
+WASHINGTON20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/WASHINGTON20132014")
+WASHINGTON20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/WASHINGTON20142015")
+WASHINGTON20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/WASHINGTON20152016")
+WASHINGTON20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/WASHINGTON20162017")
+
+WINNIPEG20072008 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/WINNIPEG.ATLANTA20072008")
+WINNIPEG20082009 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/WINNIPEG.ATLANTA20082009")
+WINNIPEG20092010 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/WINNIPEG.ATLANTA20092010")
+WINNIPEG20102011 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/WINNIPEG.ATLANTA20102011")
+WINNIPEG20112012 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/WINNIPEG.ATLANTA20112012")
+WINNIPEG20132014 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/WINNIPEG.ATLANTA20132014")
+WINNIPEG20142015 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/WINNIPEG.ATLANTA20142015")
+WINNIPEG20152016 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/WINNIPEG.ATLANTA20152016")
+WINNIPEG20162017 <- read.csv(file = "~/Documents/Statistics 4993 (Project in Statistics)/Datasets/Team Stats/WINNIPEG.ATLANTA20162017")
+
+ANAHIEM <- data.frame(rbind(ANAHIEM20072008,ANAHIEM20082009,ANAHIEM20092010,ANAHIEM20102011,ANAHIEM20112012,ANAHIEM20132014,ANAHIEM20142015,ANAHIEM20152016,ANAHIEM20162017),team =cbind(c("ANAHIEM","ANAHIEM","ANAHIEM","ANAHIEM","ANAHIEM","ANAHIEM","ANAHIEM","ANAHIEM","ANAHIEM")))
+ARIZONA <- data.frame(rbind(ARIZONA20072008,ARIZONA20082009,ARIZONA20092010,ARIZONA20102011,ARIZONA20112012,ARIZONA20132014,ARIZONA20142015,ARIZONA20152016,ARIZONA20162017),team =cbind(c("ARIZONA","ARIZONA","ARIZONA","ARIZONA","ARIZONA","ARIZONA","ARIZONA","ARIZONA","ARIZONA")))
+ARIZONA$X <- NULL 
+BOSTON <- data.frame(rbind(BOSTON20072008,BOSTON20082009,BOSTON20092010,BOSTON20102011,BOSTON20112012,BOSTON20132014,BOSTON20142015,BOSTON20152016,BOSTON20162017),team =cbind(c("BOSTON","BOSTON","BOSTON","BOSTON","BOSTON","BOSTON","BOSTON","BOSTON","BOSTON")))
+BOSTON$X <- NULL
+BUFFALO <- data.frame(rbind(BUFFALO20072008,BUFFALO20082009,BUFFALO20092010,BUFFALO20102011,BUFFALO20112012,BUFFALO20132014,BUFFALO20142015,BUFFALO20152016,BUFFALO20162017),team =cbind(c("BUFFALO","BUFFALO","BUFFALO","BUFFALO","BUFFALO","BUFFALO","BUFFALO","BUFFALO","BUFFALO")))
+BUFFALO$X <- NULL
+CALGARY <- data.frame(rbind(CALGARY20072008,CALGARY20082009,CALGARY20092010,CALGARY20102011,CALGARY20112012,CALGARY20132014,CALGARY20142015,CALGARY20152016,CALGARY20162017),team =cbind(c("CALGARY","CALGARY","CALGARY","CALGARY","CALGARY","CALGARY","CALGARY","CALGARY","CALGARY")))
+CALGARY$X <- NULL
+CAROLINA <- data.frame(rbind(CAROLINA20072008,CAROLINA20082009,CAROLINA20092010,CAROLINA20102011,CAROLINA20112012,CAROLINA20132014,CAROLINA20142015,CAROLINA20152016,CAROLINA20162017),team =cbind(c("CAROLINA","CAROLINA","CAROLINA","CAROLINA","CAROLINA","CAROLINA","CAROLINA","CAROLINA","CAROLINA")))
+CAROLINA$X <- NULL
+CHICAGO <- data.frame(rbind(CHICAGO20072008,CHICAGO20082009,CHICAGO20092010,CHICAGO20102011,CHICAGO20112012,CHICAGO20132014,CHICAGO20142015,CHICAGO20152016,CHICAGO20162017),team =cbind(c("CHICAGO","CHICAGO","CHICAGO","CHICAGO","CHICAGO","CHICAGO","CHICAGO","CHICAGO","CHICAGO")))
+CHICAGO$X <- NULL
+COLORADO <- data.frame(rbind(COLORADO20072008,COLORADO20082009,COLORADO20092010,COLORADO20102011,COLORADO20112012,COLORADO20132014,COLORADO20142015,COLORADO20152016,COLORADO20162017),team =cbind(c("COLORADO","COLORADO","COLORADO","COLORADO","COLORADO","COLORADO","COLORADO","COLORADO","COLORADO")))
+COLORADO$X <-NULL
+COLUMBUS <- data.frame(rbind(COLUMBUS20072008,COLUMBUS20082009,COLUMBUS20092010,COLUMBUS20102011,COLUMBUS20112012,COLUMBUS20132014,COLUMBUS20142015,COLUMBUS20152016,COLUMBUS20162017),team =cbind(c("COLUMBUS","COLUMBUS","COLUMBUS","COLUMBUS","COLUMBUS","COLUMBUS","COLUMBUS","COLUMBUS","COLUMBUS")))
+COLUMBUS$X <- NULL
+DALLAS <- data.frame(rbind(DALLAS20072008,DALLAS20082009,DALLAS20092010,DALLAS20102011,DALLAS20112012,DALLAS20132014,DALLAS20142015,DALLAS20152016,DALLAS20162017),team =cbind(c("DALLAS","DALLAS","DALLAS","DALLAS","DALLAS","DALLAS","DALLAS","DALLAS","DALLAS")))
+DALLAS$X <- NULL
+DETROIT <- data.frame(rbind(DETROIT20072008,DETROIT20082009,DETROIT20092010,DETROIT20102011,DETROIT20112012,DETROIT20132014,DETROIT20142015,DETROIT20152016,DETROIT20162017),team =cbind(c("DETROIT","DETROIT","DETROIT","DETROIT","DETROIT","DETROIT","DETROIT","DETROIT","DETROIT")))
+DETROIT$X <- NULL
+EDMONTON <- data.frame(rbind(EDMONTON20072008,EDMONTON20082009,EDMONTON20092010,EDMONTON20102011,EDMONTON20112012,EDMONTON20132014,EDMONTON20142015,EDMONTON20152016,EDMONTON20162017),team =cbind(c("EDMONTON","EDMONTON","EDMONTON","EDMONTON","EDMONTON","EDMONTON","EDMONTON","EDMONTON","EDMONTON")))
+EDMONTON$X <- NULL
+FLORIDA <- data.frame(rbind(FLORIDA20072008,FLORIDA20082009,FLORIDA20092010,FLORIDA20102011,FLORIDA20112012,FLORIDA20132014,FLORIDA20142015,FLORIDA20152016,FLORIDA20162017),team =cbind(c("FLORIDA","FLORIDA","FLORIDA","FLORIDA","FLORIDA","FLORIDA","FLORIDA","FLORIDA","FLORIDA")))
+FLORIDA$X <- NULL
+LOS_ANGLAS <- data.frame(rbind(LOS_ANGLAS20072008,LOS_ANGLAS20082009,LOS_ANGLAS20092010,LOS_ANGLAS20102011,LOS_ANGLAS20112012,LOS_ANGLAS20132014,LOS_ANGLAS20142015,LOS_ANGLAS20152016,LOS_ANGLAS20162017),team =cbind(c("LOS_ANGLAS","LOS_ANGLAS","LOS_ANGLAS","LOS_ANGLAS","LOS_ANGLAS","LOS_ANGLAS","LOS_ANGLAS","LOS_ANGLAS","LOS_ANGLAS")))
+LOS_ANGLAS$X <- NULL
+MINNESODA <- data.frame(rbind(MINNESODA20072008,MINNESODA20082009,MINNESODA20092010,MINNESODA20102011,MINNESODA20112012,MINNESODA20132014,MINNESODA20142015,MINNESODA20152016,MINNESODA20162017),team =cbind(c("MINNESODA","MINNESODA","MINNESODA","MINNESODA","MINNESODA","MINNESODA","MINNESODA","MINNESODA","MINNESODA")))
+MINNESODA$X <- NULL
+MONTREAL <- data.frame(rbind(MONTREAL20072008,MONTREAL20082009,MONTREAL20092010,MONTREAL20102011,MONTREAL20112012,MONTREAL20132014,MONTREAL20142015,MONTREAL20152016,MONTREAL20162017),team =cbind(c("MONTREAL","MONTREAL","MONTREAL","MONTREAL","MONTREAL","MONTREAL","MONTREAL","MONTREAL","MONTREAL")))
+MONTREAL$X <- NULL
+NASHVILLE <- data.frame(rbind(NASHVILLE20072008,NASHVILLE20082009,NASHVILLE20092010,NASHVILLE20102011,NASHVILLE20112012,NASHVILLE20132014,NASHVILLE20142015,NASHVILLE20152016,NASHVILLE20162017),team =cbind(c("NASHVILLE","NASHVILLE","NASHVILLE","NASHVILLE","NASHVILLE","NASHVILLE","NASHVILLE","NASHVILLE","NASHVILLE")))
+NASHVILLE$X <- NULL
+NEW_JERESY <- data.frame(rbind(NEW_JERESY20072008,NEW_JERESY20082009,NEW_JERESY20092010,NEW_JERESY20102011,NEW_JERESY20112012,NEW_JERESY20132014,NEW_JERESY20142015,NEW_JERESY20152016,NEW_JERESY20162017),team =cbind(c("NEW_JERESY","NEW_JERESY","NEW_JERESY","NEW_JERESY","NEW_JERESY","NEW_JERESY","NEW_JERESY","NEW_JERESY","NEW_JERESY")))
+NEW_JERESY$X <- NULL
+NEW_YORK_ISLANDERS <- data.frame(rbind(NEW_YORK_ISLANDERS20072008,NEW_YORK_ISLANDERS20082009,NEW_YORK_ISLANDERS20092010,NEW_YORK_ISLANDERS20102011,NEW_YORK_ISLANDERS20112012,NEW_YORK_ISLANDERS20132014,NEW_YORK_ISLANDERS20142015,NEW_YORK_ISLANDERS20152016,NEW_YORK_ISLANDERS20162017),team =cbind(c("NEW_YORK_ISLANDERS","NEW_YORK_ISLANDERS","NEW_YORK_ISLANDERS","NEW_YORK_ISLANDERS","NEW_YORK_ISLANDERS","NEW_YORK_ISLANDERS","NEW_YORK_ISLANDERS","NEW_YORK_ISLANDERS","NEW_YORK_ISLANDERS")))
+NEW_YORK_ISLANDERS$X <- NULL
+NEW_YORK_RANGERS <- data.frame(rbind(NEW_YORK_RANGERS20072008,NEW_YORK_RANGERS20082009,NEW_YORK_RANGERS20092010,NEW_YORK_RANGERS20102011,NEW_YORK_RANGERS20112012,NEW_YORK_RANGERS20132014,NEW_YORK_RANGERS20142015,NEW_YORK_RANGERS20152016,NEW_YORK_RANGERS20162017),team =cbind(c("NEW_YORK_RANGERS","NEW_YORK_RANGERS","NEW_YORK_RANGERS","NEW_YORK_RANGERS","NEW_YORK_RANGERS","NEW_YORK_RANGERS","NEW_YORK_RANGERS","NEW_YORK_RANGERS","NEW_YORK_RANGERS")))
+NEW_YORK_RANGERS$X <- NULL
+OTTAWA <- data.frame(rbind(OTTAWA20072008,OTTAWA20082009,OTTAWA20092010,OTTAWA20102011,OTTAWA20112012,OTTAWA20132014,OTTAWA20142015,OTTAWA20152016,OTTAWA20162017),team =cbind(c("OTTAWA","OTTAWA","OTTAWA","OTTAWA","OTTAWA","OTTAWA","OTTAWA","OTTAWA","OTTAWA")))
+OTTAWA$X <- NULL
+PHILIDELPHIA <- data.frame(rbind(PHILIDELPHIA20072008,PHILIDELPHIA20082009,PHILIDELPHIA20092010,PHILIDELPHIA20102011,PHILIDELPHIA20112012,PHILIDELPHIA20132014,PHILIDELPHIA20142015,PHILIDELPHIA20152016,PHILIDELPHIA20162017),team =cbind(c("PHILIDELPHIA","PHILIDELPHIA","PHILIDELPHIA","PHILIDELPHIA","PHILIDELPHIA","PHILIDELPHIA","PHILIDELPHIA","PHILIDELPHIA","PHILIDELPHIA")))
+PHILIDELPHIA$X <- NULL
+PITTSBURG <- data.frame(rbind(PITTSBURG20072008,PITTSBURG20082009,PITTSBURG20092010,PITTSBURG20102011,PITTSBURG20112012,PITTSBURG20132014,PITTSBURG20142015,PITTSBURG20152016,PITTSBURG20162017),team =cbind(c("PITTSBURG","PITTSBURG","PITTSBURG","PITTSBURG","PITTSBURG","PITTSBURG","PITTSBURG","PITTSBURG","PITTSBURG")))
+PITTSBURG$X <- NULL
+SAN_JOSE <- data.frame(rbind(SAN_JOSE20072008,SAN_JOSE20082009,SAN_JOSE20092010,SAN_JOSE20102011,SAN_JOSE20112012,SAN_JOSE20132014,SAN_JOSE20142015,SAN_JOSE20152016,SAN_JOSE20162017),team =cbind(c("SAN_JOSE","SAN_JOSE","SAN_JOSE","SAN_JOSE","SAN_JOSE","SAN_JOSE","SAN_JOSE","SAN_JOSE","SAN_JOSE")))
+SAN_JOSE$X <- NULL
+ST_LOUIS <- data.frame(rbind(ST_LOUIS20072008,ST_LOUIS20082009,ST_LOUIS20092010,ST_LOUIS20102011,ST_LOUIS20112012,ST_LOUIS20132014,ST_LOUIS20142015,ST_LOUIS20152016,ST_LOUIS20162017),team =cbind(c("ST_LOUIS","ST_LOUIS","ST_LOUIS","ST_LOUIS","ST_LOUIS","ST_LOUIS","ST_LOUIS","ST_LOUIS","ST_LOUIS")))
+ST_LOUIS$X <- NULL
+TAMPA_BAY <- data.frame(rbind(TAMPA_BAY20072008,TAMPA_BAY20082009,TAMPA_BAY20092010,TAMPA_BAY20102011,TAMPA_BAY20112012,TAMPA_BAY20132014,TAMPA_BAY20142015,TAMPA_BAY20152016,TAMPA_BAY20162017),team =cbind(c("TAMPA_BAY","TAMPA_BAY","TAMPA_BAY","TAMPA_BAY","TAMPA_BAY","TAMPA_BAY","TAMPA_BAY","TAMPA_BAY","TAMPA_BAY")))
+TAMPA_BAY$X <- NULL
+TORONTO <- data.frame(rbind(TORONTO20072008,TORONTO20082009,TORONTO20092010,TORONTO20102011,TORONTO20112012,TORONTO20132014,TORONTO20142015,TORONTO20152016,TORONTO20162017),team =cbind(c("TORONTO","TORONTO","TORONTO","TORONTO","TORONTO","TORONTO","TORONTO","TORONTO","TORONTO")))
+TORONTO$X <- NULL
+VANCOUVER <- data.frame(rbind(VANCOUVER20072008,VANCOUVER20082009,VANCOUVER20092010,VANCOUVER20102011,VANCOUVER20112012,VANCOUVER20132014,VANCOUVER20142015,VANCOUVER20152016,VANCOUVER20162017),team =cbind(c("VANCOUVER","VANCOUVER","VANCOUVER","VANCOUVER","VANCOUVER","VANCOUVER","VANCOUVER","VANCOUVER","VANCOUVER")))
+VANCOUVER$X <- NULL
+WASHINGTON <- data.frame(rbind(WASHINGTON20072008,WASHINGTON20082009,WASHINGTON20092010,WASHINGTON20102011,WASHINGTON20112012,WASHINGTON20132014,WASHINGTON20142015,WASHINGTON20152016,WASHINGTON20162017),team =cbind(c("WASHINGTON","WASHINGTON","WASHINGTON","WASHINGTON","WASHINGTON","WASHINGTON","WASHINGTON","WASHINGTON","WASHINGTON")))
+WASHINGTON$X <- NULL
+WINNIPEG <- data.frame(rbind(WINNIPEG20072008,WINNIPEG20082009,WINNIPEG20092010,WINNIPEG20102011,WINNIPEG20112012,WINNIPEG20132014,WINNIPEG20142015,WINNIPEG20152016,WINNIPEG20162017),team =cbind(c("WINNIPEG","WINNIPEG","WINNIPEG","WINNIPEG","WINNIPEG","WINNIPEG","WINNIPEG","WINNIPEG","WINNIPEG")))
+WINNIPEG$X <- NULL
+
+DATA <- rbind(ANAHIEM,ARIZONA,BOSTON,BUFFALO,CALGARY,CAROLINA,CHICAGO,COLORADO,COLUMBUS,DALLAS,DETROIT,EDMONTON,FLORIDA,LOS_ANGLAS,MINNESODA,MONTREAL,NASHVILLE,NEW_JERESY,NEW_YORK_ISLANDERS,NEW_YORK_RANGERS,OTTAWA,PHILIDELPHIA,PITTSBURG,SAN_JOSE,ST_LOUIS,TAMPA_BAY,TORONTO,VANCOUVER,WASHINGTON,WINNIPEG)
+DATA$gamesPlayed <- NULL
+
+null.model <- lm(DATA$pts ~ 1, data=DATA)
+full.model <- lm(DATA$pts ~ DATA$wins + DATA$losses + DATA$ot + DATA$ptPctg + DATA$goalsPerGame + DATA$goalsAgainstPerGame + DATA$evGGARatio + DATA$powerPlayPercentage + DATA$powerPlayGoals + DATA$powerPlayGoalsAgainst + DATA$powerPlayOpportunities + DATA$penaltyKillPercentage + DATA$shotsPerGame + DATA$shotsAllowed + DATA$winScoreFirst + DATA$winOppScoreFirst + DATA$winLeadFirstPer + DATA$winLeadSecondPer + DATA$winOutshootOpp + DATA$winOutshotByOpp + DATA$faceOffsTaken + DATA$faceOffsWon + DATA$faceOffsLost + DATA$faceOffWinPercentage + DATA$shootingPctg + DATA$savePctg, data = DATA)
+
+AIC.output <- step(null.model, scope = list(lower = null.model, upper = full.model), direction = "both")
+
+#Step:  AIC=-1655.03 DATA$pts ~ DATA$ptPctg + DATA$shotsPerGame + DATA$evGGARatio
+
+model2 <- lm(DATA$pts ~ DATA$ptPctg + DATA$evGGARatio + DATA$shotsPerGame, data = DATA)
+
+plot(model2$residuals)
+
+x = model.matrix(DATA$pts ~.-1,data = DATA)
+#x = x[-c(29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56)]
+y = DATA$pts
+
+fit.ridge = glmnet(x,y,alpha = 0) # ridge regression fit
+plot(fit.ridge,xvar = "lambda", label = TRUE) 
+
+cv.ridge = cv.glmnet(x,y,alpha = 0)
+plot(cv.ridge)
+  

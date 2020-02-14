@@ -1,0 +1,63 @@
+%%----------Chapter 2------------------------------------------
+\chapter{Data}
+\subsection*{Data Collection}
+The data that we used for this analysis comes from an application programmer interface, (API)  https://statsapi.web.nhl.com/api/v1, that has a variety of modifiers used to collect our desired data. The data is stored in javascript object notation (JSON). Therefore, in order to collect the data we have to make calls to the API, which requires the R JSON package in R. Rather then showing the entire R code for this process, I show how I obtained the data for New Jersey Devils. This code appears in Appendix A. This data collection technique has several steps. First, we use the function fromJSON and we send to it the website with the modifier /teams/i/stats?season=20072008, where i is an unique number corresponding to the team and 20072008 corresponds to a specific season; this modifier can be changed to specify any team and season that we wish to examine. This process creates a data frame for each individual year. The second step is to extract the raw data. To do so we use the command  $\$$stats[[1]]$\$$splits[[1]]. This allows us to extract the variables that we are going to be using. In Appendix B there are examples of the uncleaned data. In Appendix C is the code for cleaning the data, and what the cleaned data looks like. This process was repeated for all 31\footnote{The thirty first team Vegas Golden Knights only needed data from the inaugural season of 2017-2018} teams in the NHL.  We are now going to explain the process of cleaning the data set. 
+\subsection*{Cleaning of the Dataset}
+One year of data, the 2012-2013 season was removed from the overall dataset. This was due to that season having been shortened to 48 games because of a lockout between the National Hockey League Players Association(NHLPA) and team owners. Our next step was to remove variables that are highly correlated. To do so we look at a heat map (see Appendix D). We see that the variable \textit{NHL team points }is strongly correlated ($\geq 0.90$) with losses, wins, point percentage, and overtime losses; these latter four variables are therefore removed. Lost face offs are also removed due to there already being face offs won in the data set. We now have our cleaned dataset of 270 observations. The 24 variables are listed in a table below.
+\begin{flushleft}
+\begin{tabular}{|c|c|}
+	\hline
+	Variable & Description \\
+	\hline
+	points &  Points are calculated as follows $pts = 2*win + 1*ot$.  \\
+	\hline
+	goalsPerGame & average number of goals a team scores per game \\
+	\hline
+	goalsAgainstPerGame & average number of goals a team gives up per game \\
+	\hline
+	EvGAARatio & goals the goalie gives up per "even strength regulation time".\cite{GAA} \\
+	\hline
+	PowerPlayPercentage &  percentage of power play goals a team scores \\
+	\hline
+	PowerPlayGoals & the number of power play goals a team scores \\
+	\hline
+	Penalty Kill Percentage & percentage of power plays that a team does not get scored on \\
+	\hline
+	Power Play Goals Against & number of power play goals against \\
+	\hline
+	Power Play Opportunities & number of power plays a team got during the season \\
+	\hline
+	ShotsPerGame & average number of shots on goal  \\
+	\hline
+	ShotsAllowed & average number of shots that a team gives up  \\
+	\hline
+	WinScoreFirst & number of games won when a team scored first \\
+	\hline
+	WinOppScoreFirst & number of games that a team won when it did not score first  \\
+	\hline
+	winLeadFirstPer & number of wins when a team had the lead after first period \\
+	\hline
+	winLeadSecondPer & number of wins when a team had the lead after second period \\
+	\hline
+	winOutshootOpp & number of wins when a team had led in shots \\
+	\hline
+	winOutshotByOpp & number of wins when a team did not lead in shots \\
+	\hline
+	ShootingPctg & the percentage of shots that resulted in goals scored \\
+	\hline
+	savePctg & percentage of shots against that did not result in goals \\
+	\hline
+	faceoffsTaken & number of faceoffs taken\\
+	\hline
+	faceoffsWon & number of faceoffs won\\
+	\hline
+	faceoffWinPercentage & percentage of faceoffs won \\
+	\hline
+	madePlayoffs & 1 if a team made playoffs and 0 if a team missed \\
+	\hline
+	\end{tabular}
+\captionof{table}{Table of Variables}\label{tbl:Table of Variables}
+\end{flushleft}
+\subsection*{Additional Variable Definition}
+We require one further variable that does not come from the API; this variable is \textit{made playoffs}, a quantitative variable that takes on the values of 1 or 0. If a team makes the playoffs, then \textit{made playoffs} is 1, otherwise, \textit{made playoffs} is 0. This variable was hard coded into R; the website \url{https://www.hockey-reference.com/playoffs/} was used to determine which teams made the playoffs in a given year. Our next step was to establish the theory behind the models we created.
+

@@ -1,0 +1,9 @@
+http://www.hockeyabstract.com/thoughts/abriefhistoryofhockeyanalyticsconferences
+https://drsimonj.svbtle.com/ridge-regression-with-glmnet
+https://shirinsplayground.netlify.com/2018/06/intro_to_ml_workshop_heidelberg/
+https://gitlab.com/dword4/nhlapi
+https://www.silversevensens.com/2014/12/23/7439287/season-simulations-with-pip
+http://www.biostat.jhsph.edu/~iruczins/teaching/jf/ch10.pdf
+https://gerardnico.com/data_mining/ridge_regression
+https://gerardnico.com/data_mining/shrinkage#ridge_regression_vs_lasso
+http://r-statistics.co/Logistic-Regression-With-R.html
